@@ -1,16 +1,28 @@
 export const siteConfig = {
   name: 'MHA',
   initials: 'M·H·A',
-  fullName: 'M Hamza Aftab',
-  role: 'Full Stack Developer',
+  fullName: 'Muhammad Hamza Aftab',
+  displayName: { prefix: 'Muhammad', main: 'Hamza Aftab' },
+  firstName: 'Hamza',
+  role: 'Full-Stack Engineer & AI Specialist',
   location: 'Dubai, UAE',
   email: 'hamzaaftab.dev@gmail.com',
-  // Replace with your actual WhatsApp number (include country code, no + or spaces)
-  whatsapp: '971XXXXXXXXX',
+  phone: '+971521096471',
+  available: true,
+  whatsapp: '971521096471',
   social: {
-    github: 'https://github.com/',
-    linkedin: 'https://linkedin.com/in/',
-    twitter: 'https://twitter.com/',
+    github: 'https://github.com/mhamzaaftab1166',
+    linkedin: 'https://linkedin.com/in/hamzaaftab66/',
   },
   cv: '/cv.pdf',
+  stats: [
+    { value: '3+', labelKey: 'statsYears' },
+    { value: '15+', labelKey: 'statsProjects' },
+    { value: '10+', labelKey: 'statsClients' },
+  ],
+  techStack: [
+    'React.js', 'Next.js', 'React Native',
+    'Vue.js', 'Nuxt.js', 'Node.js',
+    'TypeScript', 'AI / LLM', 'Claude AI',
+  ],
 };
