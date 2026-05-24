@@ -70,7 +70,7 @@ export default function Experience() {
           transition={{ duration: 0.7, ease }}
           className="flex items-center gap-5 mb-12"
         >
-          <span className="text-[9px] tracking-[0.5em] uppercase text-primary/55 shrink-0">04</span>
+          <span className="text-[9px] tracking-[0.5em] uppercase text-primary/72 shrink-0">04</span>
           <div className="w-8 h-px bg-primary/35 shrink-0" />
           <h2 className="text-[11px] tracking-[0.45em] uppercase text-muted-foreground shrink-0">
             {t('sectionLabel')}
@@ -129,7 +129,7 @@ export default function Experience() {
                 </div>
 
                 {/* Card */}
-                <div className="flex-1 glass rounded-2xl p-6 border border-primary/10 hover:border-primary/28 transition-all duration-300 mb-1 hover:shadow-[0_8px_32px_oklch(0_0_0/35%),_0_0_24px_oklch(0.73_0.12_85/6%)]">
+                <div className="flex-1 glass rounded-2xl p-6 border border-primary/20 hover:border-primary/38 transition-all duration-300 mb-1 hover:shadow-[0_8px_32px_oklch(0_0_0/35%),_0_0_24px_oklch(0.73_0.12_85/6%)]">
 
                   {/* Top row */}
                   <div className="flex flex-wrap items-start justify-between gap-4 mb-5">
@@ -138,7 +138,7 @@ export default function Experience() {
                       {/* Badges */}
                       <div className="flex flex-wrap items-center gap-2 mb-2">
                         {job.current && (
-                          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/[0.09] border border-emerald-500/22 text-[7.5px] tracking-[0.32em] uppercase text-emerald-400">
+                          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/[0.12] border border-emerald-500/38 text-[7.5px] tracking-[0.32em] uppercase text-emerald-400">
                             <span className="relative flex h-1.5 w-1.5 shrink-0">
                               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                               <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400" />
@@ -146,7 +146,7 @@ export default function Experience() {
                             {t('present')}
                           </span>
                         )}
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-primary/20 text-[7.5px] tracking-[0.28em] uppercase text-primary/65">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-primary/35 text-[7.5px] tracking-[0.28em] uppercase text-primary/85">
                           <HiBriefcase size={9} />
                           {job.type}
                         </span>
@@ -155,7 +155,7 @@ export default function Experience() {
                       <h3 className="font-bold text-foreground mb-0.5" style={{ fontSize: 'clamp(1rem, 2vw, 1.2rem)' }}>
                         {job.role}
                       </h3>
-                      <p className="text-primary/75 text-[13px]">{job.company}</p>
+                      <p className="text-primary/90 text-[13px]">{job.company}</p>
                     </div>
 
                     {/* Date + location */}
@@ -164,7 +164,7 @@ export default function Experience() {
                         {formatDate(job.startDate)}&nbsp;—&nbsp;
                         {job.current ? t('present') : job.endDate ? formatDate(job.endDate) : ''}
                       </p>
-                      <p className="flex items-center justify-start sm:justify-end gap-1 text-[9px] text-muted-foreground/55 mt-1">
+                      <p className="flex items-center justify-start sm:justify-end gap-1 text-[9px] text-muted-foreground/80 mt-1">
                         <HiMapPin size={9} />
                         {job.location}
                       </p>
@@ -179,7 +179,7 @@ export default function Experience() {
                     {job.bullets.map((bullet, j) => (
                       <li key={j} className="flex gap-3 items-start">
                         <div className="w-[5px] h-[5px] rounded-full bg-primary/50 shrink-0 mt-[0.42rem] ring-[3px] ring-primary/10" />
-                        <span className="text-foreground/70 leading-[1.75]" style={{ fontSize: 'clamp(0.8rem, 1.3vw, 0.875rem)' }}>
+                        <span className="text-foreground/85 leading-[1.75]" style={{ fontSize: 'clamp(0.8rem, 1.3vw, 0.875rem)' }}>
                           {bullet}
                         </span>
                       </li>
@@ -191,7 +191,7 @@ export default function Experience() {
                     {job.techStack.map(tech => (
                       <span
                         key={tech}
-                        className="text-[7.5px] tracking-[0.22em] uppercase px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-muted-foreground/70 hover:border-primary/35 hover:text-primary/80 hover:bg-primary/[0.06] transition-all duration-200 cursor-default"
+                        className="text-[7.5px] tracking-[0.22em] uppercase px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.15] text-muted-foreground/82 hover:border-primary/45 hover:text-primary/90 hover:bg-primary/[0.07] transition-all duration-200 cursor-default"
                       >
                         {tech}
                       </span>

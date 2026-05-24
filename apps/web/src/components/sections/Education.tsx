@@ -68,7 +68,7 @@ export default function Education() {
           transition={{ duration: 0.7, ease }}
           className="flex items-center gap-5 mb-12"
         >
-          <span className="text-[9px] tracking-[0.5em] uppercase text-primary/55 shrink-0">05</span>
+          <span className="text-[9px] tracking-[0.5em] uppercase text-primary/72 shrink-0">05</span>
           <div className="w-8 h-px bg-primary/35 shrink-0" />
           <h2 className="text-[11px] tracking-[0.45em] uppercase text-muted-foreground shrink-0">
             {t('sectionLabel')}
@@ -129,10 +129,10 @@ export default function Education() {
                   </div>
 
                   {/* Card */}
-                  <div className="flex-1 glass rounded-2xl p-6 border border-primary/10 hover:border-primary/28 transition-all duration-300 mb-1 hover:shadow-[0_8px_32px_oklch(0_0_0/35%),_0_0_24px_oklch(0.73_0.12_85/6%)]">
+                  <div className="flex-1 glass rounded-2xl p-6 border border-primary/20 hover:border-primary/38 transition-all duration-300 mb-1 hover:shadow-[0_8px_32px_oklch(0_0_0/35%),_0_0_24px_oklch(0.73_0.12_85/6%)]">
 
                     {/* Period pill */}
-                    <span className="inline-flex items-center px-3 py-1 rounded-full bg-primary/[0.08] border border-primary/22 text-[8px] tracking-[0.35em] uppercase text-primary/80 mb-4">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full bg-primary/[0.08] border border-primary/40 text-[8px] tracking-[0.35em] uppercase text-primary/90 mb-4">
                       {entry.period}
                     </span>
 
@@ -144,7 +144,7 @@ export default function Education() {
 
                     <div className="h-px bg-gradient-to-r from-primary/20 to-transparent mb-3" />
 
-                    <p className="flex items-center gap-1.5 text-[9px] text-muted-foreground/55">
+                    <p className="flex items-center gap-1.5 text-[9px] text-muted-foreground/80">
                       <HiMapPin size={10} />
                       {entry.location}
                     </p>
@@ -161,7 +161,7 @@ export default function Education() {
             transition={{ duration: 0.8, delay: 0.3, ease }}
             className="flex flex-col gap-4"
           >
-            <p className="text-[7.5px] tracking-[0.5em] uppercase text-primary/55 mb-1">
+            <p className="text-[7.5px] tracking-[0.5em] uppercase text-primary/80 mb-1">
               {t('honorsLabel')}
             </p>
 
@@ -173,7 +173,7 @@ export default function Education() {
                   initial={{ opacity: 0, y: 16 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: 0.45 + i * 0.14, ease }}
-                  className="glass rounded-2xl p-5 border border-primary/10 hover:border-primary/35 transition-all duration-300 group hover:shadow-[0_8px_32px_oklch(0_0_0/35%),_0_0_24px_oklch(0.73_0.12_85/7%)]"
+                  className="glass rounded-2xl p-5 border border-primary/20 hover:border-primary/45 transition-all duration-300 group hover:shadow-[0_8px_32px_oklch(0_0_0/35%),_0_0_24px_oklch(0.73_0.12_85/7%)]"
                 >
                   <div className="flex items-start gap-4">
                     <div
@@ -191,7 +191,7 @@ export default function Education() {
                       <h4 className="font-bold text-foreground mb-1.5" style={{ fontSize: 'clamp(0.85rem, 1.5vw, 0.95rem)' }}>
                         {honor.title}
                       </h4>
-                      <p className="text-foreground/78 leading-[1.7]" style={{ fontSize: 'clamp(0.75rem, 1.2vw, 0.8rem)' }}>
+                      <p className="text-foreground/88 leading-[1.7]" style={{ fontSize: 'clamp(0.75rem, 1.2vw, 0.8rem)' }}>
                         {honor.description}
                       </p>
                     </div>

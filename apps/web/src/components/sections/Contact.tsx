@@ -93,7 +93,7 @@ export default function Contact() {
           animate={inView ? 'show' : 'hidden'}
           className="flex items-center gap-5 mb-12"
         >
-          <span className="text-[9px] tracking-[0.5em] uppercase text-primary/55 shrink-0">05</span>
+          <span className="text-[9px] tracking-[0.5em] uppercase text-primary/72 shrink-0">05</span>
           <div className="w-8 h-px bg-primary/35 shrink-0" />
           <h2 className="text-[11px] tracking-[0.45em] uppercase text-muted-foreground shrink-0">
             {t('sectionLabel')}
@@ -147,7 +147,7 @@ export default function Contact() {
                   {t('available')}
                 </span>
               </div>
-              <p className="text-[11.5px] text-muted-foreground/60 ps-5 leading-relaxed">
+              <p className="text-[11.5px] text-muted-foreground/82 ps-5 leading-relaxed">
                 {contactData.responseTime}
               </p>
             </div>
@@ -158,19 +158,19 @@ export default function Contact() {
               style={{ boxShadow: '0 0 30px oklch(0 0 0 / 25%)' }}
             >
               <div className="flex items-center gap-3.5 group cursor-default">
-                <div className="w-8 h-8 rounded-full border border-primary/16 flex items-center justify-center shrink-0 group-hover:border-primary/42 group-hover:bg-primary/[0.07] transition-all duration-300">
-                  <HiMapPin size={12} className="text-primary/45 group-hover:text-primary/85 transition-all duration-300 group-hover:scale-110" />
+                <div className="w-8 h-8 rounded-full border border-primary/32 flex items-center justify-center shrink-0 group-hover:border-primary/55 group-hover:bg-primary/[0.09] transition-all duration-300">
+                  <HiMapPin size={12} className="text-primary/72 group-hover:text-primary transition-all duration-300 group-hover:scale-110" />
                 </div>
-                <span className="text-[12.5px] text-foreground/68 font-light tracking-wide">{contactData.location}</span>
+                <span className="text-[12.5px] text-foreground/88 font-light tracking-wide">{contactData.location}</span>
               </div>
 
               <div className="flex items-center gap-3.5 group">
-                <div className="w-8 h-8 rounded-full border border-primary/16 flex items-center justify-center shrink-0 group-hover:border-primary/42 group-hover:bg-primary/[0.07] transition-all duration-300">
-                  <HiEnvelope size={12} className="text-primary/45 group-hover:text-primary/85 transition-all duration-300 group-hover:scale-110" />
+                <div className="w-8 h-8 rounded-full border border-primary/32 flex items-center justify-center shrink-0 group-hover:border-primary/55 group-hover:bg-primary/[0.09] transition-all duration-300">
+                  <HiEnvelope size={12} className="text-primary/72 group-hover:text-primary transition-all duration-300 group-hover:scale-110" />
                 </div>
                 <a
                   href={`mailto:${contactData.email}`}
-                  className="text-[12.5px] text-foreground/68 font-light tracking-wide hover:text-primary transition-colors duration-300 truncate"
+                  className="text-[12.5px] text-foreground/88 font-light tracking-wide hover:text-primary transition-colors duration-300 truncate"
                 >
                   {contactData.email}
                 </a>
@@ -205,7 +205,7 @@ export default function Contact() {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2.5 rounded-full border border-white/10 text-muted-foreground hover:border-primary/40 hover:text-primary hover:bg-primary/[0.06] hover:shadow-[0_0_14px_oklch(0.73_0.12_85/12%)] transition-all duration-300"
+                    className="flex items-center gap-2 px-4 py-2.5 rounded-full border border-white/[0.20] text-muted-foreground hover:border-primary/45 hover:text-primary hover:bg-primary/[0.07] hover:shadow-[0_0_14px_oklch(0.73_0.12_85/12%)] transition-all duration-300"
                   >
                     {Icon && <Icon size={12} />}
                     <span className="text-[8.5px] tracking-[0.28em] uppercase">{link.label}</span>
@@ -229,42 +229,42 @@ export default function Contact() {
 
                 {/* Name */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-[7.5px] tracking-[0.45em] uppercase text-muted-foreground/55">
+                  <label className="text-[7.5px] tracking-[0.45em] uppercase text-muted-foreground/78">
                     {t('name')}
                   </label>
                   <input
                     type="text"
                     value={form.name}
                     onChange={e => setForm(s => ({ ...s, name: e.target.value }))}
-                    className="w-full px-4 py-3 rounded-xl text-[13px] text-foreground/90 bg-white/[0.04] border border-white/[0.08] outline-none focus:border-primary/50 focus:bg-primary/[0.05] focus:shadow-[0_0_0_3px_oklch(0.73_0.12_85/10%)] transition-all duration-300 placeholder:text-muted-foreground/25 font-light tracking-wide"
+                    className="w-full px-4 py-3 rounded-xl text-[13px] text-foreground/90 bg-white/[0.04] border border-white/[0.16] outline-none focus:border-primary/55 focus:bg-primary/[0.05] focus:shadow-[0_0_0_3px_oklch(0.73_0.12_85/10%)] transition-all duration-300 placeholder:text-muted-foreground/38 font-light tracking-wide"
                     placeholder="Your full name"
                   />
                 </div>
 
                 {/* Email */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-[7.5px] tracking-[0.45em] uppercase text-muted-foreground/55">
+                  <label className="text-[7.5px] tracking-[0.45em] uppercase text-muted-foreground/78">
                     {t('email')}
                   </label>
                   <input
                     type="email"
                     value={form.email}
                     onChange={e => setForm(s => ({ ...s, email: e.target.value }))}
-                    className="w-full px-4 py-3 rounded-xl text-[13px] text-foreground/90 bg-white/[0.04] border border-white/[0.08] outline-none focus:border-primary/50 focus:bg-primary/[0.05] focus:shadow-[0_0_0_3px_oklch(0.73_0.12_85/10%)] transition-all duration-300 placeholder:text-muted-foreground/25 font-light tracking-wide"
+                    className="w-full px-4 py-3 rounded-xl text-[13px] text-foreground/90 bg-white/[0.04] border border-white/[0.16] outline-none focus:border-primary/55 focus:bg-primary/[0.05] focus:shadow-[0_0_0_3px_oklch(0.73_0.12_85/10%)] transition-all duration-300 placeholder:text-muted-foreground/38 font-light tracking-wide"
                     placeholder="hello@example.com"
                   />
                 </div>
 
                 {/* Message */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-[7.5px] tracking-[0.45em] uppercase text-muted-foreground/55">
+                  <label className="text-[7.5px] tracking-[0.45em] uppercase text-muted-foreground/78">
                     {t('message')}
                   </label>
                   <textarea
                     rows={5}
                     value={form.message}
                     onChange={e => setForm(s => ({ ...s, message: e.target.value }))}
-                    className="w-full px-4 py-3 rounded-xl text-[13px] text-foreground/90 bg-white/[0.04] border border-white/[0.08] outline-none focus:border-primary/50 focus:bg-primary/[0.05] focus:shadow-[0_0_0_3px_oklch(0.73_0.12_85/10%)] transition-all duration-300 placeholder:text-muted-foreground/25 resize-none font-light tracking-wide leading-relaxed"
+                    className="w-full px-4 py-3 rounded-xl text-[13px] text-foreground/90 bg-white/[0.04] border border-white/[0.16] outline-none focus:border-primary/55 focus:bg-primary/[0.05] focus:shadow-[0_0_0_3px_oklch(0.73_0.12_85/10%)] transition-all duration-300 placeholder:text-muted-foreground/38 resize-none font-light tracking-wide leading-relaxed"
                     placeholder="Tell me about your project..."
                   />
                 </div>

@@ -318,8 +318,8 @@ export default function About() {
 
           {/* Team Contributions */}
           <div
-            className="glass rounded-2xl p-7 border border-primary/10 relative overflow-hidden"
-            style={{ boxShadow: '0 0 40px oklch(0.73 0.12 85 / 4%), 0 16px 40px oklch(0 0 0 / 25%)' }}
+            className="glass rounded-2xl p-7 border border-primary/20 relative overflow-hidden"
+            style={{ boxShadow: '0 0 40px oklch(0.73 0.12 85 / 5%), 0 16px 40px oklch(0 0 0 / 28%)' }}
           >
             {/* Gold top-edge accent */}
             <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
@@ -351,8 +351,8 @@ export default function About() {
 
           {/* Languages */}
           <div
-            className="glass rounded-2xl p-7 border border-primary/10 relative overflow-hidden"
-            style={{ boxShadow: '0 0 40px oklch(0.73 0.12 85 / 4%), 0 16px 40px oklch(0 0 0 / 25%)' }}
+            className="glass rounded-2xl p-7 border border-primary/20 relative overflow-hidden"
+            style={{ boxShadow: '0 0 40px oklch(0.73 0.12 85 / 5%), 0 16px 40px oklch(0 0 0 / 28%)' }}
           >
             {/* Gold top-edge accent */}
             <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
@@ -383,7 +383,7 @@ export default function About() {
                       {level}
                     </span>
                   </div>
-                  <div className="h-[3px] rounded-full bg-white/[0.06] overflow-hidden">
+                  <div className="h-[3px] rounded-full bg-white/[0.10] overflow-hidden">
                     <motion.div
                       className="h-full rounded-full"
                       style={{ background: 'linear-gradient(to right, oklch(0.49 0.10 75 / 80%), oklch(0.73 0.12 85))' }}

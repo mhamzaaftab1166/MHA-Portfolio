@@ -88,9 +88,9 @@ function Actions({ project, t }: { project: Project; t: ReturnType<typeof useTra
 
   if (noUrls) {
     return (
-      <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.035]">
-        <HiLockClosed size={10} className="text-muted-foreground/55" />
-        <span className="text-[7.5px] tracking-[0.38em] uppercase text-muted-foreground/55">{t('private')}</span>
+      <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/[0.22] bg-white/[0.06]">
+        <HiLockClosed size={10} className="text-muted-foreground/80" />
+        <span className="text-[7.5px] tracking-[0.38em] uppercase text-muted-foreground/80">{t('private')}</span>
       </div>
     );
   }
@@ -113,7 +113,7 @@ function Actions({ project, t }: { project: Project; t: ReturnType<typeof useTra
           href={project.appStoreUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/[0.04] text-foreground/75 hover:border-primary/38 hover:text-primary hover:bg-primary/[0.07] transition-all duration-300"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/[0.20] bg-white/[0.06] text-foreground/85 hover:border-primary/45 hover:text-primary hover:bg-primary/[0.09] transition-all duration-300"
         >
           <SiAppstore size={12} />
           <span className="text-[8px] tracking-[0.28em] uppercase">App Store</span>
@@ -124,7 +124,7 @@ function Actions({ project, t }: { project: Project; t: ReturnType<typeof useTra
           href={project.playStoreUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/[0.04] text-foreground/75 hover:border-primary/38 hover:text-primary hover:bg-primary/[0.07] transition-all duration-300"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/[0.20] bg-white/[0.06] text-foreground/85 hover:border-primary/45 hover:text-primary hover:bg-primary/[0.09] transition-all duration-300"
         >
           <SiGoogleplay size={11} />
           <span className="text-[8px] tracking-[0.28em] uppercase">Play Store</span>
@@ -135,7 +135,7 @@ function Actions({ project, t }: { project: Project; t: ReturnType<typeof useTra
           href={project.githubUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/[0.04] text-foreground/75 hover:border-primary/38 hover:text-primary hover:bg-primary/[0.07] transition-all duration-300"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/[0.20] bg-white/[0.06] text-foreground/85 hover:border-primary/45 hover:text-primary hover:bg-primary/[0.09] transition-all duration-300"
         >
           <SiGithub size={12} />
           <span className="text-[8px] tracking-[0.28em] uppercase">{t('viewCode')}</span>
@@ -186,7 +186,7 @@ export default function Projects() {
           transition={{ duration: 0.7, ease }}
           className="flex items-center gap-5 mb-12"
         >
-          <span className="text-[9px] tracking-[0.5em] uppercase text-primary/55 shrink-0">06</span>
+          <span className="text-[9px] tracking-[0.5em] uppercase text-primary/72 shrink-0">06</span>
           <div className="w-8 h-px bg-primary/35 shrink-0" />
           <h2 className="text-[11px] tracking-[0.45em] uppercase text-muted-foreground shrink-0">
             {t('sectionLabel')}
@@ -214,7 +214,7 @@ export default function Projects() {
               animate={inView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
               transition={{ duration: 0.75, delay: 0.15 + i * 0.13, ease }}
               whileHover={reduced ? {} : { y: -3, transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] } }}
-              className="glass rounded-2xl border border-primary/10 hover:border-primary/30 overflow-hidden transition-colors duration-300 hover:shadow-[0_20px_56px_oklch(0_0_0/45%),_0_0_36px_oklch(0.73_0.12_85/7%)]"
+              className="glass rounded-2xl border border-primary/20 hover:border-primary/40 overflow-hidden transition-colors duration-300 hover:shadow-[0_20px_56px_oklch(0_0_0/45%),_0_0_36px_oklch(0.73_0.12_85/7%)]"
             >
               <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr]">
 
@@ -247,7 +247,7 @@ export default function Projects() {
                       {project.tags.map(tag => (
                         <span
                           key={tag}
-                          className="text-[7px] tracking-[0.32em] uppercase px-2.5 py-1 rounded-full bg-white/[0.05] border border-white/[0.09] text-muted-foreground/70"
+                          className="text-[7px] tracking-[0.32em] uppercase px-2.5 py-1 rounded-full bg-white/[0.06] border border-white/[0.18] text-muted-foreground/82"
                         >
                           {tag}
                         </span>
@@ -282,14 +282,14 @@ export default function Projects() {
                       {project.techStack.map(tech => (
                         <span
                           key={tech}
-                          className="text-[7.5px] tracking-[0.22em] uppercase px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-muted-foreground/72 hover:border-primary/38 hover:text-primary/85 hover:bg-primary/[0.06] transition-all duration-200 cursor-default"
+                          className="text-[7.5px] tracking-[0.22em] uppercase px-2.5 py-1 rounded-full bg-white/[0.05] border border-white/[0.16] text-muted-foreground/82 hover:border-primary/45 hover:text-primary/90 hover:bg-primary/[0.07] transition-all duration-200 cursor-default"
                         >
                           {tech}
                         </span>
                       ))}
                     </div>
 
-                    <div className="h-px bg-gradient-to-r from-primary/18 to-transparent" />
+                    <div className="h-px bg-gradient-to-r from-primary/28 to-transparent" />
 
                     <Actions project={project} t={t} />
                   </div>
@@ -307,10 +307,10 @@ export default function Projects() {
           className="flex items-center gap-5 mb-7"
         >
           <div className="w-8 h-px bg-primary/25 shrink-0" />
-          <h3 className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground/65 shrink-0">
+          <h3 className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground/82 shrink-0">
             {t('otherProjects')}
           </h3>
-          <div className="flex-1 h-px bg-gradient-to-r from-primary/15 to-transparent" />
+          <div className="flex-1 h-px bg-gradient-to-r from-primary/22 to-transparent" />
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -321,14 +321,14 @@ export default function Projects() {
               animate={inView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
               transition={{ duration: 0.6, delay: 0.62 + i * 0.09, ease }}
               whileHover={reduced ? {} : { y: -3, transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] } }}
-              className="glass rounded-2xl p-6 border border-primary/10 hover:border-primary/28 transition-colors duration-300 flex flex-col gap-4 hover:shadow-[0_12px_36px_oklch(0_0_0/38%),_0_0_22px_oklch(0.73_0.12_85/5%)]"
+              className="glass rounded-2xl p-6 border border-primary/20 hover:border-primary/38 transition-colors duration-300 flex flex-col gap-4 hover:shadow-[0_12px_36px_oklch(0_0_0/38%),_0_0_22px_oklch(0.73_0.12_85/5%)]"
             >
               {/* Tags */}
               <div className="flex flex-wrap gap-1.5">
                 {project.tags.map(tag => (
                   <span
                     key={tag}
-                    className="text-[6.5px] tracking-[0.3em] uppercase px-2 py-0.5 rounded-full bg-white/[0.04] border border-white/[0.07] text-muted-foreground/60"
+                    className="text-[6.5px] tracking-[0.3em] uppercase px-2 py-0.5 rounded-full bg-white/[0.05] border border-white/[0.16] text-muted-foreground/78"
                   >
                     {tag}
                   </span>
@@ -340,27 +340,27 @@ export default function Projects() {
                 <h4 className="font-bold text-foreground/95 mb-2" style={{ fontSize: 'clamp(0.95rem, 1.7vw, 1.1rem)' }}>
                   {project.title}
                 </h4>
-                <p className="text-foreground/75 leading-[1.72]" style={{ fontSize: 'clamp(0.78rem, 1.2vw, 0.85rem)' }}>
+                <p className="text-foreground/88 leading-[1.72]" style={{ fontSize: 'clamp(0.78rem, 1.2vw, 0.85rem)' }}>
                   {project.description}
                 </p>
               </div>
 
               {/* Role */}
-              <p className="text-[8.5px] tracking-[0.2em] text-primary/72 leading-[1.6]">{project.role}</p>
+              <p className="text-[8.5px] tracking-[0.2em] text-primary/88 leading-[1.6]">{project.role}</p>
 
               {/* Tech stack */}
               <div className="flex flex-wrap gap-1.5">
                 {project.techStack.map(tech => (
                   <span
                     key={tech}
-                    className="text-[7px] tracking-[0.2em] uppercase px-2 py-0.5 rounded-full bg-white/[0.04] border border-white/[0.07] text-muted-foreground/65 hover:border-primary/32 hover:text-primary/78 transition-all duration-200 cursor-default"
+                    className="text-[7px] tracking-[0.2em] uppercase px-2 py-0.5 rounded-full bg-white/[0.05] border border-white/[0.16] text-muted-foreground/80 hover:border-primary/42 hover:text-primary/90 transition-all duration-200 cursor-default"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
 
-              <div className="h-px bg-gradient-to-r from-primary/15 to-transparent" />
+              <div className="h-px bg-gradient-to-r from-primary/22 to-transparent" />
 
               <Actions project={project} t={t} />
             </motion.div>
