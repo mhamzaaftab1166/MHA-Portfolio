@@ -77,8 +77,22 @@ document.body.style.overflow = open ? 'hidden' : '';
 ```
 
 ## Current Build Status
-Completed: Hero, About, Skills, Experience, Contact, Navbar, Footer, WhatsApp button.
-**Deferred**: Projects section (user explicitly said "we will get back to that").
+All sections complete. Page order: Hero → About → Skills → Experience → Education → Projects → Contact.
+
+| Section | Component | Notes |
+|---|---|---|
+| Navbar | `layout/Navbar.tsx` | Education link added |
+| Footer | `layout/Footer.tsx` | — |
+| WhatsApp | `layout/WhatsAppButton.tsx` | — |
+| Hero (01) | `sections/Hero.tsx` | — |
+| About (02) | `sections/About.tsx` | + Team Contributions, Languages cards at bottom |
+| Skills (03) | `sections/Skills.tsx` | + Soft Skills tab, Platforms tab |
+| Experience (04) | `sections/Experience.tsx` | — |
+| Education (05) | `sections/Education.tsx` | Timeline + Honors/Awards cards |
+| Projects (06) | `sections/Projects.tsx` | 3 featured + 4 other; gradient placeholder when imageUrl is null |
+| Contact | `sections/Contact.tsx` | — |
+
+**Pending**: project screenshot images (drop in `public/images/projects/` and set `imageUrl` in projects.json).
 
 ## Dev Commands (from repo root)
 ```bash

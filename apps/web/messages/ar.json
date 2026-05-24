@@ -56,7 +56,9 @@
     "subtitle": "مجموعة من أحدث أعمالي",
     "sectionLabel": "ما بنيته",
     "viewProject": "عرض المشروع",
-    "viewCode": "عرض الكود"
+    "viewCode": "عرض الكود",
+    "otherProjects": "مزيد من المشاريع",
+    "private": "خاص / سري"
   },
   "Contact": {
     "title": "تواصل معي",

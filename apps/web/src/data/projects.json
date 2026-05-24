@@ -2,45 +2,110 @@
   "featured": [
     {
       "id": "project_1",
-      "title": "AI-Powered SaaS Dashboard",
-      "description": "A full-stack SaaS platform with AI-driven analytics, real-time data visualization, and Claude AI integration for automated insights.",
-      "imageUrl": "/images/projects/project1.png",
-      "liveUrl": "https://project1.com",
-      "githubUrl": "https://github.com/YOUR_USERNAME/project1",
-      "techStack": ["Next.js", "TypeScript", "Claude AI", "PostgreSQL", "Tailwind CSS"],
-      "tags": ["AI", "SaaS", "Full-Stack"]
+      "title": "Ophthall",
+      "description": "A healthcare platform supporting eye care providers with practice management, growth strategies, ophthalmic learning resources, and marketplace solutions.",
+      "imageUrl": null,
+      "liveUrl": "https://www.ophthall.in/",
+      "githubUrl": null,
+      "techStack": [
+        "Next.js",
+        "TypeScript",
+        "React Query",
+        "Tailwind CSS",
+        "Redux",
+        "Node.js",
+        "Express.js",
+        "MySQL"
+      ],
+      "tags": ["Healthcare", "Full-Stack", "Freelance"],
+      "role": "Freelancer — managing frontend development, API integration, and backend APIs."
     },
     {
       "id": "project_2",
-      "title": "E-Commerce Mobile App",
-      "description": "Cross-platform mobile app built with React Native for a UAE-based retailer, featuring AR product preview and multi-currency checkout.",
-      "imageUrl": "/images/projects/project2.png",
-      "liveUrl": null,
-      "githubUrl": "https://github.com/YOUR_USERNAME/project2",
-      "techStack": ["React Native", "Expo", "Node.js", "Stripe", "Redis"],
-      "tags": ["Mobile", "E-Commerce", "React Native"]
+      "title": "KR Institute",
+      "description": "A healthcare education platform providing practical certification courses for licensed professionals across Singapore, UAE, and Bahrain.",
+      "imageUrl": null,
+      "liveUrl": "https://www.krinstitute.sg/",
+      "githubUrl": null,
+      "techStack": ["Next.js", "CSS Modules"],
+      "tags": ["Education", "Healthcare", "Frontend"],
+      "role": "Freelancer — frontend development."
     },
     {
       "id": "project_3",
-      "title": "Real Estate Platform",
-      "description": "A bilingual real estate listing platform for the Dubai market with map integration, advanced filters, and lead management.",
-      "imageUrl": "/images/projects/project3.png",
-      "liveUrl": "https://project3.com",
+      "title": "Petlays",
+      "description": "A pet management mobile application for bookings, live tracking, pet services, and scheduling with real-time functionality and map integrations.",
+      "imageUrl": null,
+      "liveUrl": "https://petlays.com/",
+      "appStoreUrl": "https://apps.apple.com/us/app/petlays/id6759533668",
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.petlays",
       "githubUrl": null,
-      "techStack": ["Vue.js", "Nuxt.js", "Laravel", "MySQL", "Google Maps API"],
-      "tags": ["Real Estate", "Bilingual", "Vue.js"]
+      "techStack": [
+        "React Native CLI",
+        "React Query",
+        "Zustand",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Google Maps APIs",
+        "Socket.IO"
+      ],
+      "tags": ["Mobile App", "Real-Time", "Ongoing"],
+      "role": "Team Lead — overseeing frontend development, API integration, and real-time features."
     }
   ],
   "other": [
     {
       "id": "project_4",
-      "title": "Portfolio Template",
-      "description": "Open-source portfolio template with dark/gold luxury aesthetic, bilingual support, and Framer Motion animations.",
+      "title": "GirGir Auction",
+      "description": "A real-time car auction platform enabling live bidding, pre-bids, and direct vehicle purchases with a seamless auction experience.",
       "imageUrl": null,
-      "liveUrl": "https://portfolio.com",
-      "githubUrl": "https://github.com/YOUR_USERNAME/portfolio",
-      "techStack": ["Next.js", "Tailwind CSS", "Framer Motion"],
-      "tags": ["Open Source", "Design"]
+      "liveUrl": "https://girgirauction.com/",
+      "githubUrl": null,
+      "techStack": ["Next.js", "Bootstrap", "Redux"],
+      "tags": ["Auction", "Cars", "Frontend"],
+      "role": "Frontend Lead — overseeing frontend development and ensuring smooth user experience."
+    },
+    {
+      "id": "project_5",
+      "title": "VLS Law Academy",
+      "description": "An educational platform for law entrance preparation and professional law courses with mentorship-driven learning experiences.",
+      "imageUrl": null,
+      "liveUrl": "https://www.vlslawacademy.com/",
+      "githubUrl": null,
+      "techStack": ["Next.js", "Tailwind CSS", "React Query"],
+      "tags": ["Education", "Law", "Frontend"],
+      "role": "Freelancer — frontend development and API integration."
+    },
+    {
+      "id": "project_6",
+      "title": "Lit.it",
+      "description": "A modern digital platform focused on streamlined online experiences and scalable frontend architecture.",
+      "imageUrl": null,
+      "liveUrl": "https://lit.it/",
+      "githubUrl": null,
+      "techStack": ["Next.js", "TypeScript", "Tailwind CSS"],
+      "tags": ["Web Platform", "Frontend"],
+      "role": "Frontend Development & UI Implementation."
+    },
+    {
+      "id": "project_7",
+      "title": "Private Enterprise Portals",
+      "description": "Developed multiple private enterprise-grade dashboards, admin portals, and internal management systems under NDA agreements for clients across different industries.",
+      "imageUrl": null,
+      "liveUrl": null,
+      "githubUrl": null,
+      "techStack": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Node.js",
+        "MongoDB",
+        "SQL",
+        "Tailwind CSS"
+      ],
+      "tags": ["NDA", "Enterprise", "Private Projects"],
+      "role": "Full-Stack Development, API Integrations, Dashboard Systems, and Scalable Frontend Architecture."
     }
   ]
 }

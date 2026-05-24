@@ -55,8 +55,10 @@
     "title": "Projects",
     "subtitle": "A selection of my recent work",
     "sectionLabel": "What I've Built",
-    "viewProject": "View Project",
-    "viewCode": "View Code"
+    "viewProject": "View Live",
+    "viewCode": "View Code",
+    "otherProjects": "More Projects",
+    "private": "Private / NDA"
   },
   "Contact": {
     "title": "Get In Touch",

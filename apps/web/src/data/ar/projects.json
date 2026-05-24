@@ -2,45 +2,84 @@
   "featured": [
     {
       "id": "project_1",
-      "title": "لوحة تحكم SaaS مدعومة بالذكاء الاصطناعي",
-      "description": "منصة SaaS متكاملة مع تحليلات مدعومة بالذكاء الاصطناعي، وتصوير بيانات فوري، ودمج Claude AI لرؤى تلقائية.",
-      "imageUrl": "/images/projects/project1.png",
-      "liveUrl": "https://project1.com",
-      "githubUrl": "https://github.com/YOUR_USERNAME/project1",
-      "techStack": ["Next.js", "TypeScript", "Claude AI", "PostgreSQL", "Tailwind CSS"],
-      "tags": ["ذكاء اصطناعي", "SaaS", "فول ستاك"]
+      "title": "Ophthall",
+      "description": "منصة رعاية صحية تدعم مقدمي رعاية العيون في إدارة الممارسة والنمو والتعلم والحلول التجارية.",
+      "imageUrl": null,
+      "liveUrl": "https://www.ophthall.in/",
+      "githubUrl": null,
+      "techStack": ["Next.js", "TypeScript", "React Query", "Tailwind CSS", "Redux", "Node.js", "Express.js", "MySQL"],
+      "tags": ["رعاية صحية", "فول ستاك", "مستقل"],
+      "role": "مستقل — إدارة تطوير الواجهة الأمامية وتكامل API والـ APIs الخلفية."
     },
     {
       "id": "project_2",
-      "title": "تطبيق تجارة إلكترونية للجوال",
-      "description": "تطبيق موبايل متعدد المنصات بُني بـ React Native لمتجر إماراتي، مع معاينة المنتجات بالواقع المعزز ودفع متعدد العملات.",
-      "imageUrl": "/images/projects/project2.png",
-      "liveUrl": null,
-      "githubUrl": "https://github.com/YOUR_USERNAME/project2",
-      "techStack": ["React Native", "Expo", "Node.js", "Stripe", "Redis"],
-      "tags": ["موبايل", "تجارة إلكترونية", "React Native"]
+      "title": "KR Institute",
+      "description": "منصة تعليم طبي توفر دورات شهادات عملية للمهنيين المرخصين في سنغافورة والإمارات والبحرين.",
+      "imageUrl": null,
+      "liveUrl": "https://www.krinstitute.sg/",
+      "githubUrl": null,
+      "techStack": ["Next.js", "CSS Modules"],
+      "tags": ["تعليم", "رعاية صحية", "واجهة أمامية"],
+      "role": "مستقل — تطوير الواجهة الأمامية."
     },
     {
       "id": "project_3",
-      "title": "منصة عقارية",
-      "description": "منصة عقارية ثنائية اللغة لسوق دبي مع تكامل الخرائط والفلاتر المتقدمة وإدارة العملاء المحتملين.",
-      "imageUrl": "/images/projects/project3.png",
-      "liveUrl": "https://project3.com",
+      "title": "Petlays",
+      "description": "تطبيق موبايل لإدارة الحيوانات الأليفة يشمل الحجوزات والتتبع المباشر وخدمات الحيوانات الأليفة والجدولة مع وظائف فورية وتكامل الخرائط.",
+      "imageUrl": null,
+      "liveUrl": "https://petlays.com/",
+      "appStoreUrl": "https://apps.apple.com/us/app/petlays/id6759533668",
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.petlays",
       "githubUrl": null,
-      "techStack": ["Vue.js", "Nuxt.js", "Laravel", "MySQL", "Google Maps API"],
-      "tags": ["عقارات", "ثنائي اللغة", "Vue.js"]
+      "techStack": ["React Native CLI", "React Query", "Zustand", "Node.js", "Express.js", "MongoDB", "Google Maps APIs", "Socket.IO"],
+      "tags": ["تطبيق موبايل", "فوري", "جاري"],
+      "role": "قائد فريق — الإشراف على تطوير الواجهة الأمامية وتكامل API والميزات الفورية."
     }
   ],
   "other": [
     {
       "id": "project_4",
-      "title": "قالب محفظة أعمال",
-      "description": "قالب محفظة أعمال مفتوح المصدر بتصميم فاخر داكن/ذهبي، مع دعم ثنائي اللغة وحركات Framer Motion.",
+      "title": "GirGir Auction",
+      "description": "منصة مزاد سيارات فوري تتيح المزايدة المباشرة والمسبقة وشراء المركبات مباشرة.",
       "imageUrl": null,
-      "liveUrl": "https://portfolio.com",
-      "githubUrl": "https://github.com/YOUR_USERNAME/portfolio",
-      "techStack": ["Next.js", "Tailwind CSS", "Framer Motion"],
-      "tags": ["مفتوح المصدر", "تصميم"]
+      "liveUrl": "https://girgirauction.com/",
+      "githubUrl": null,
+      "techStack": ["Next.js", "Bootstrap", "Redux"],
+      "tags": ["مزاد", "سيارات", "واجهة أمامية"],
+      "role": "قائد واجهة أمامية — الإشراف على تطوير الواجهة وضمان سلاسة تجربة المستخدم."
+    },
+    {
+      "id": "project_5",
+      "title": "VLS Law Academy",
+      "description": "منصة تعليمية للتحضير لامتحانات القانون ودورات القانون المهنية مع تجارب تعليمية موجهة بالإرشاد.",
+      "imageUrl": null,
+      "liveUrl": "https://www.vlslawacademy.com/",
+      "githubUrl": null,
+      "techStack": ["Next.js", "Tailwind CSS", "React Query"],
+      "tags": ["تعليم", "قانون", "واجهة أمامية"],
+      "role": "مستقل — تطوير الواجهة الأمامية وتكامل API."
+    },
+    {
+      "id": "project_6",
+      "title": "Lit.it",
+      "description": "منصة رقمية حديثة تركز على تجارب الويب المبسطة والهندسة المعمارية للواجهة الأمامية القابلة للتوسع.",
+      "imageUrl": null,
+      "liveUrl": "https://lit.it/",
+      "githubUrl": null,
+      "techStack": ["Next.js", "TypeScript", "Tailwind CSS"],
+      "tags": ["منصة ويب", "واجهة أمامية"],
+      "role": "تطوير الواجهة الأمامية وتنفيذ واجهة المستخدم."
+    },
+    {
+      "id": "project_7",
+      "title": "بوابات المؤسسات الخاصة",
+      "description": "تطوير لوحات تحكم وبوابات إدارة داخلية متعددة للمؤسسات تحت اتفاقيات سرية لعملاء في مختلف الصناعات.",
+      "imageUrl": null,
+      "liveUrl": null,
+      "githubUrl": null,
+      "techStack": ["Next.js", "React", "TypeScript", "Node.js", "MongoDB", "SQL", "Tailwind CSS"],
+      "tags": ["سري", "مؤسسات", "مشاريع خاصة"],
+      "role": "تطوير فول ستاك، تكامل APIs، أنظمة لوحات التحكم، وهندسة الواجهة الأمامية القابلة للتوسع."
     }
   ]
 }

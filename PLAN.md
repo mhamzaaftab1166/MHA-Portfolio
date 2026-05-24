@@ -12,11 +12,12 @@ MHA-Portfolio/                        ← workspace root (run all commands here)
 ├── apps/
 │   ├── web/                          ← Next.js 16 portfolio  ✅
 │   │   ├── messages/
-│   │   │   ├── en.json               ✅ all EN strings (Navbar, Hero, About, Skills, Experience, Contact, Footer)
-│   │   │   └── ar.json               ✅ all AR strings + RTL
+│   │   │   ├── en.json               ✅ Navbar, Hero, About, Skills, Experience, Education, Projects, Contact, Footer
+│   │   │   └── ar.json               ✅ full Arabic mirror
 │   │   ├── public/
 │   │   │   ├── images/
-│   │   │   │   └── MHA.png           ✅ profile photo added
+│   │   │   │   ├── MHA.png           ✅ profile photo
+│   │   │   │   └── projects/         ← drop project screenshots here (imageUrl in projects.json)
 │   │   │   └── cv/
 │   │   │       └── hamza-aftab-cv.pdf  ← drop CV here when ready
 │   │   └── src/
@@ -25,41 +26,42 @@ MHA-Portfolio/                        ← workspace root (run all commands here)
 │   │       │   ├── globals.css       ✅ Dubai dark palette + utilities
 │   │       │   └── [locale]/
 │   │       │       ├── layout.tsx    ✅ html/body, fonts, dir, NextIntlClientProvider, metadata
-│   │       │       └── page.tsx      ✅ Hero→About→Skills→Experience→Contact + SectionDivider
+│   │       │       └── page.tsx      ✅ Hero→About→Skills→Experience→Education→Projects→Contact
 │   │       ├── components/
 │   │       │   ├── layout/
-│   │       │   │   ├── Navbar.tsx    ✅ data-driven, scroll-progress, glass, mobile menu (fixed), lang toggle
+│   │       │   │   ├── Navbar.tsx    ✅ data-driven, scroll-progress, glass, mobile menu, lang toggle
 │   │       │   │   ├── Footer.tsx    ✅ data-driven, logo, nav, social icons
-│   │       │   │   └── WhatsAppButton.tsx  ✅ data-driven, fixed, pulse ring, tooltip
+│   │       │   │   └── WhatsAppButton.tsx  ✅ fixed, pulse ring, tooltip
 │   │       │   ├── sections/
 │   │       │   │   ├── Hero.tsx      ✅ two-column, photo frame, role ticker (10 roles), 4 icon social links
-│   │       │   │   ├── About.tsx     ✅ timeline bio (4 paras), stats, glass info card, RTL-aware animation
-│   │       │   │   ├── Skills.tsx    ✅ category tabs, animated level bars, react-icons/si
+│   │       │   │   ├── About.tsx     ✅ timeline bio, stats, glass info card + Team Contributions + Languages
+│   │       │   │   ├── Skills.tsx    ✅ 7 category tabs (incl. Soft Skills + Platforms), animated level bars
 │   │       │   │   ├── Experience.tsx ✅ vertical gold timeline, 4 jobs, tech stack pills
-│   │       │   │   ├── Projects.tsx  ← DEFERRED (next phase)
+│   │       │   │   ├── Education.tsx ✅ academic timeline (NTU + PGC) + Honors/Awards cards
+│   │       │   │   ├── Projects.tsx  ✅ 3 featured (horizontal) + 4 other (grid); gradient placeholders; NDA badge
 │   │       │   │   └── Contact.tsx   ✅ Web3Forms integration, success/error states
 │   │       │   └── ui/               ✅ shadcn/ui components
 │   │       ├── data/
 │   │       │   ├── hero.json         ✅ name, roles (10), stats, social links, cvUrl, whatsappNumber
-│   │       │   ├── about.json        ✅ bio (4 paras), location, email, phone, cvUrl, stats
-│   │       │   ├── skills.json       ✅ 5 categories, 34 skills with icon + level
-│   │       │   ├── experience.json   ✅ 4 jobs (GFMC, SLC, NTU, QB) with bullets + techStack
+│   │       │   ├── about.json        ✅ bio, location, email, phone, softSkills, supports, languages
+│   │       │   ├── skills.json       ✅ 7 categories: frontend, backend, ai, testing, soft, platforms, tools
+│   │       │   ├── experience.json   ✅ 4 jobs (GFMC, SLC, NTU, QB)
+│   │       │   ├── education.json    ✅ 2 entries (NTU, PGC) + 2 honors (Gold Medal, PM Laptop)
+│   │       │   ├── projects.json     ✅ 3 featured + 4 other; appStoreUrl/playStoreUrl on mobile projects
 │   │       │   ├── contact.json      ✅ email, whatsapp, location, web3formsKey, socialLinks
-│   │       │   ├── navbar.json       ✅ cvUrl, navLinks
+│   │       │   ├── navbar.json       ✅ cvUrl, navLinks (incl. education)
 │   │       │   └── ar/               ✅ Arabic mirrors of all above
 │   │       ├── i18n/
 │   │       │   ├── routing.ts        ✅ locales: ['en','ar'], default: 'en'
 │   │       │   ├── navigation.ts     ✅ Link, usePathname, useRouter
 │   │       │   └── request.ts        ✅ server-side message loader
 │   │       ├── lib/
-│   │       │   ├── config.ts         ✅ siteConfig — name, socials, phone, stats, tech stack
-│   │       │   ├── data.ts           ✅ getData(key, locale) — locale-aware JSON loader
+│   │       │   ├── config.ts         ✅ siteConfig — name, socials, phone, stats
+│   │       │   ├── data.ts           ✅ getData(key, locale) — supports all 8 data keys
 │   │       │   └── utils.ts          ✅ shadcn cn() utility
 │   │       └── proxy.ts              ✅ next-intl locale middleware (Next.js 16)
 │   ├── api/                          ← Backend (placeholder, Hono/Bun — future)
-│   │   └── src/index.ts              ← placeholder only
 │   └── types/                        ✅ @mha/types — shared TS types
-│       └── src/index.ts              ✅ ContactFormPayload, Project, ApiResponse
 ├── CLAUDE.md                         ✅ AI assistant instructions (up to date)
 ├── PLAN.md                           ✅ this file
 ├── .gitignore                        ✅
@@ -138,42 +140,36 @@ Every section follows this pattern:
 - [x] shadcn/ui (new-york), framer-motion, next-intl, react-icons
 - [x] Dubai dark palette, Geist+Cairo fonts, RTL dir switching
 - [x] Monorepo: apps/web + apps/api (placeholder) + apps/types
-- [x] .gitignore, .gitattributes, .vscode/settings.json
 
 ### Phase 2 — Core Layout  ✅ COMPLETE
 - [x] Navbar — scroll-progress bar, glass on scroll, mobile hamburger + overlay, lang toggle, Download CV
 - [x] Footer — logo, nav links, social icons
 - [x] WhatsAppButton — floating fixed, pulse ring, hover tooltip, RTL-aware
-- [x] All wired into `[locale]/layout.tsx`
 
-### Phase 3 — Content Sections  ✅ COMPLETE (except Projects)
-- [x] Data layer — `src/data/*.json` (EN) + `src/data/ar/*.json` (AR), `getData(key, locale)`
-- [x] `Hero.tsx` — two-column, photo frame + orbit rings, role ticker (10 roles), stats, 4 icon social buttons
-- [x] `About.tsx` — timeline bio, glass info card, stats, RTL-aware slide-in animation
-- [x] `Skills.tsx` — category tab switcher, animated level bars, react-icons/si dynamic icons
+### Phase 3 — Content Sections  ✅ COMPLETE
+- [x] Data layer — `src/data/*.json` (EN) + `src/data/ar/*.json` (AR)
+- [x] `Hero.tsx` — two-column, photo frame, role ticker (10 roles), stats, 4 icon social buttons
+- [x] `About.tsx` — timeline bio, glass info card, stats, Team Contributions + Languages bottom cards
+- [x] `Skills.tsx` — 7 category tabs (incl. Soft Skills, Platforms), animated level bars
 - [x] `Experience.tsx` — vertical gold timeline, 4 jobs, present badge, tech stack pills
+- [x] `Education.tsx` — academic timeline (NTU + PGC), Honors/Awards glass cards
+- [x] `Projects.tsx` — 3 featured horizontal cards + 4 compact cards; gradient placeholders; NDA lock badge; App Store / Play Store buttons
 - [x] `Contact.tsx` — Web3Forms integration, two-column layout, success/error feedback
 - [x] All sections assembled in `[locale]/page.tsx` with SectionDivider
-- [ ] `Projects.tsx` — **DEFERRED** (will be built as its own phase)
 
 ### Phase 4 — Polish  ✅ COMPLETE
 - [x] Scroll-triggered animations (`useInView`, Framer Motion) across all sections
 - [x] `next/image` optimization (Hero photo, About photo)
 - [x] `generateMetadata` per locale (title, description, OG, Twitter card)
 - [x] UI polish pass (glass backgrounds, gold glows, spacing, typography)
-- [x] Mobile responsiveness pass (Navbar z-index, scroll lock, Experience layout, Contact padding)
-- [ ] Lighthouse audit (target 90+) — pending
+- [x] Mobile responsiveness pass (Navbar z-index, scroll lock, Experience layout)
+- [x] Text visibility pass (opacity bumped on bio, contact info, degree, honor descriptions)
+- [ ] Lighthouse audit (target 90+) — pending after deploy
 
-### Phase 5 — Projects Section  ⏳ NEXT
-- [ ] Design Projects section (section 03 or renumber)
-- [ ] `src/data/projects.json` + `src/data/ar/projects.json`
-- [ ] Add Projects translation keys to `messages/en.json` + `ar.json`
-- [ ] Build `Projects.tsx` — card grid, tech tags, live/repo links
-- [ ] Wire into `[locale]/page.tsx`
-
-### Phase 6 — Deploy  ⏳ PENDING
-- [ ] Push to GitHub
+### Phase 5 — Deploy  ⏳ NEXT
 - [ ] Drop CV PDF at `apps/web/public/cv/hamza-aftab-cv.pdf`
+- [ ] Add project screenshots to `apps/web/public/images/projects/` and set `imageUrl` in `projects.json`
+- [ ] Push to GitHub
 - [ ] Import in Vercel → Root Directory: `apps/web`
 - [ ] Add GoDaddy domain in Vercel Domains panel
 - [ ] GoDaddy DNS:
@@ -211,11 +207,16 @@ bun install        # sync all workspace deps
 | 7 | Email | ✅ mhamzaaftab1166@gmail.com |
 | 8 | GitHub | ✅ github.com/mhamzaaftab1166 |
 | 9 | LinkedIn | ✅ linkedin.com/in/hamzaaftab66/ |
-| 10 | Twitter / X | ⏳ provide handle to add to contact.json socialLinks |
-| 11 | Profile photo | ✅ apps/web/public/images/MHA.png |
-| 12 | Work experience | ✅ 4 jobs in experience.json |
-| 13 | Skills | ✅ 34 skills across 5 categories in skills.json |
-| 14 | Contact info | ✅ Web3Forms key in contact.json |
-| 15 | Projects (3–6) | ⏳ needed for Projects section (Phase 5) |
-| 16 | GoDaddy domain | ⏳ provide domain name for deploy config |
-| 17 | CV / Resume PDF | ⏳ drop at apps/web/public/cv/hamza-aftab-cv.pdf |
+| 10 | Profile photo | ✅ apps/web/public/images/MHA.png |
+| 11 | Work experience | ✅ 4 jobs in experience.json |
+| 12 | Skills | ✅ 7 categories in skills.json (incl. Soft Skills, Platforms) |
+| 13 | Education | ✅ NTU (2020–24) + PGC (2018–20) in education.json |
+| 14 | Honors | ✅ Gold Medalist + PM Laptop Scheme in education.json |
+| 15 | Languages | ✅ English, Urdu, Hindi in about.json |
+| 16 | Soft skills | ✅ 8 skills in about.json + Skills tab |
+| 17 | Team contributions | ✅ 6 items in about.json |
+| 18 | Projects | ✅ 7 projects in projects.json (3 featured + 4 other) |
+| 19 | Project screenshots | ⏳ drop PNGs in public/images/projects/, set imageUrl |
+| 20 | CV / Resume PDF | ⏳ drop at apps/web/public/cv/hamza-aftab-cv.pdf |
+| 21 | GoDaddy domain | ⏳ provide domain name for deploy config |
+| 22 | Twitter / X handle | ⏳ provide handle to add to contact.json socialLinks |
