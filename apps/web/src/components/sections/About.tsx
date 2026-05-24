@@ -18,18 +18,19 @@ const fadeUp = (delay = 0) => ({
   },
 });
 
-const fadeInRight = (delay = 0) => ({
-  hidden: { opacity: 0, x: 40, filter: 'blur(8px)' },
-  show: {
-    opacity: 1, x: 0, filter: 'blur(0px)',
-    transition: { duration: 0.9, ease, delay },
-  },
-});
-
 export default function About() {
   const t = useTranslations('About');
   const locale = useLocale() as 'en' | 'ar';
   const aboutData = getData('about', locale);
+  const dir = locale === 'ar' ? -1 : 1;
+
+  const fadeInRight = (delay = 0) => ({
+    hidden: { opacity: 0, x: 40 * dir, filter: 'blur(8px)' },
+    show: {
+      opacity: 1, x: 0, filter: 'blur(0px)',
+      transition: { duration: 0.9, ease, delay },
+    },
+  });
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
   const reduced = useReducedMotion();

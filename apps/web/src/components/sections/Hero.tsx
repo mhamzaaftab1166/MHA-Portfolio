@@ -4,8 +4,8 @@ import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence, useReducedMotion, useInView } from 'framer-motion';
-import { FaGithub, FaLinkedinIn } from 'react-icons/fa6';
-import { HiArrowDownRight, HiArrowDownTray } from 'react-icons/hi2';
+import { FaGithub, FaLinkedinIn, FaWhatsapp } from 'react-icons/fa6';
+import { HiArrowDownRight, HiArrowDownTray, HiEnvelope } from 'react-icons/hi2';
 import { siteConfig } from '@/lib/config';
 import { getData } from '@/lib/data';
 const ease = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -262,30 +262,25 @@ export default function Hero() {
               </a>
             </motion.div>
 
-            {/* Social links */}
-            <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-3 gap-y-2 justify-center lg:justify-start">
+            {/* Social links — uniform icon buttons */}
+            <motion.div variants={fadeUp} className="flex items-center gap-3 justify-center lg:justify-start">
               {[
-                { href: siteConfig.social.github, Icon: FaGithub, label: 'GitHub' },
-                { href: siteConfig.social.linkedin, Icon: FaLinkedinIn, label: 'LinkedIn' },
+                { href: siteConfig.social.github,                       Icon: FaGithub,    label: 'GitHub'    },
+                { href: siteConfig.social.linkedin,                     Icon: FaLinkedinIn, label: 'LinkedIn'  },
+                { href: `https://wa.me/${siteConfig.whatsapp}`,         Icon: FaWhatsapp,  label: 'WhatsApp'  },
+                { href: `mailto:${siteConfig.email}`,                   Icon: HiEnvelope,  label: 'Email'     },
               ].map(({ href, Icon, label }) => (
-                <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
-                  className="w-9 h-9 flex items-center justify-center rounded-full border border-white/10 text-muted-foreground hover:border-primary/55 hover:text-primary hover:shadow-[0_0_14px_oklch(0.73_0.12_85/20%)] transition-all duration-300">
-                  <Icon size={13} />
+                <a
+                  key={label}
+                  href={href}
+                  target={href.startsWith('mailto:') ? undefined : '_blank'}
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="w-9 h-9 flex items-center justify-center rounded-full border border-white/10 text-muted-foreground hover:border-primary/55 hover:text-primary hover:shadow-[0_0_14px_oklch(0.73_0.12_85/20%)] transition-all duration-300"
+                >
+                  <Icon size={14} />
                 </a>
               ))}
-
-              <span className="w-px h-5 bg-white/10 mx-0.5" />
-
-              <a href={`https://wa.me/${siteConfig.whatsapp}`} target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-2 text-[8.5px] tracking-[0.3em] uppercase text-muted-foreground/75 hover:text-primary transition-colors duration-300">
-                <span className="w-2 h-2 rounded-full bg-[#25D366] shrink-0" />
-                WhatsApp
-              </a>
-
-              <a href={`mailto:${siteConfig.email}`}
-                className="flex items-center gap-1.5 text-[8.5px] tracking-[0.3em] uppercase text-muted-foreground/75 hover:text-primary transition-colors duration-300">
-                Email
-              </a>
             </motion.div>
           </motion.div>
 

@@ -116,7 +116,7 @@ export default function Experience() {
                 {/* Timeline node */}
                 <div className="shrink-0 pt-4 z-10">
                   <div
-                    className={`w-[2.2rem] h-[2.2rem] rounded-full flex items-center justify-center text-[8px] font-bold tracking-widest transition-all duration-300 ${job.current && !reduced ? 'animate-node-pulse' : ''}`}
+                    className={`w-[2.2rem] h-[2.2rem] rounded-full flex items-center justify-center text-[7px] font-bold tracking-tight transition-all duration-300 ${job.current && !reduced ? 'animate-node-pulse' : ''}`}
                     style={{
                       background: job.current ? 'oklch(0.73 0.12 85)' : 'oklch(0.07 0.007 285)',
                       color: job.current ? 'oklch(0.058 0.006 285)' : 'oklch(0.73 0.12 85)',
@@ -159,12 +159,12 @@ export default function Experience() {
                     </div>
 
                     {/* Date + location */}
-                    <div className="text-end shrink-0">
+                    <div className="text-start sm:text-end shrink-0">
                       <p className="text-[10px] tracking-[0.18em] text-muted-foreground font-medium">
                         {formatDate(job.startDate)}&nbsp;—&nbsp;
                         {job.current ? t('present') : job.endDate ? formatDate(job.endDate) : ''}
                       </p>
-                      <p className="flex items-center justify-end gap-1 text-[9px] text-muted-foreground/55 mt-1">
+                      <p className="flex items-center justify-start sm:justify-end gap-1 text-[9px] text-muted-foreground/55 mt-1">
                         <HiMapPin size={9} />
                         {job.location}
                       </p>

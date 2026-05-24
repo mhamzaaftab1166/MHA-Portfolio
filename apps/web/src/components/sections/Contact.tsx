@@ -222,7 +222,7 @@ export default function Contact() {
             animate={inView ? 'show' : 'hidden'}
           >
             <div
-              className="glass rounded-2xl p-7"
+              className="glass rounded-2xl p-5 sm:p-7"
               style={{ boxShadow: '0 0 80px oklch(0.73 0.12 85 / 6%), 0 24px 60px oklch(0 0 0 / 38%)' }}
             >
               <div className="flex flex-col gap-5">

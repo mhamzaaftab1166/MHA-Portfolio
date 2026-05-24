@@ -28,7 +28,7 @@ const menuVariants = {
 const listVariants = {
   closed: {},
   open: {
-    transition: { staggerChildren: 0.07, delayChildren: 0.15 },
+    transition: { staggerChildren: 0.07, delayChildren: 0.2 },
   },
 };
 
@@ -54,10 +54,10 @@ export default function Navbar() {
 
   useMotionValueEvent(scrollY, 'change', (v) => setScrolled(v > 60));
 
-  // Lock body scroll when mobile menu is open
+  // Lock scroll when mobile menu is open — target <html> (body overflow breaks fixed on iOS)
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    document.documentElement.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => { document.documentElement.style.overflow = ''; };
   }, [mobileOpen]);
 
   const oppositeLocale = locale === 'en' ? 'ar' : 'en';
@@ -141,32 +141,35 @@ export default function Navbar() {
               <span>{t('downloadCV')}</span>
             </a>
 
-            {/* Hamburger */}
-            <button
-              onClick={() => setMobileOpen((o) => !o)}
-              className="md:hidden flex flex-col justify-center gap-[5px] w-9 h-9 p-1 group"
-              aria-label="Toggle menu"
-              aria-expanded={mobileOpen}
-            >
-              <motion.span
-                animate={mobileOpen ? { rotate: 45, y: 6, backgroundColor: 'oklch(0.73 0.12 85)' } : { rotate: 0, y: 0 }}
-                transition={{ duration: 0.3 }}
-                className="block w-full h-px bg-foreground"
-              />
-              <motion.span
-                animate={mobileOpen ? { scaleX: 0, opacity: 0 } : { scaleX: 1, opacity: 1 }}
-                transition={{ duration: 0.25 }}
-                className="block w-full h-px bg-foreground"
-              />
-              <motion.span
-                animate={mobileOpen ? { rotate: -45, y: -6, backgroundColor: 'oklch(0.73 0.12 85)' } : { rotate: 0, y: 0 }}
-                transition={{ duration: 0.3 }}
-                className="block w-full h-px bg-foreground"
-              />
-            </button>
           </div>
         </div>
       </motion.header>
+
+      {/* ── Hamburger — sits above overlay so it's always tappable ── */}
+      <div className="md:hidden fixed top-0 end-0 z-[61] h-[72px] flex items-center pe-6">
+        <button
+          onClick={() => setMobileOpen((o) => !o)}
+          className="flex flex-col justify-center gap-[5px] w-9 h-9 p-1"
+          aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
+        >
+          <motion.span
+            animate={mobileOpen ? { rotate: 45, y: 6, backgroundColor: 'oklch(0.73 0.12 85)' } : { rotate: 0, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="block w-full h-px bg-foreground"
+          />
+          <motion.span
+            animate={mobileOpen ? { scaleX: 0, opacity: 0 } : { scaleX: 1, opacity: 1 }}
+            transition={{ duration: 0.25 }}
+            className="block w-full h-px bg-foreground"
+          />
+          <motion.span
+            animate={mobileOpen ? { rotate: -45, y: -6, backgroundColor: 'oklch(0.73 0.12 85)' } : { rotate: 0, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="block w-full h-px bg-foreground"
+          />
+        </button>
+      </div>
 
       {/* ── Mobile full-screen overlay ───────────────────────────── */}
       <AnimatePresence>
@@ -177,29 +180,32 @@ export default function Navbar() {
             initial="closed"
             animate="open"
             exit="closed"
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-[--color-background]"
+            className="fixed inset-0 z-[58] overflow-y-auto bg-background"
+            style={{ backgroundColor: 'oklch(0.058 0.006 285)' }}
           >
             {/* Decorative gold radial glow */}
             <div
-              className="absolute inset-0 pointer-events-none"
+              className="fixed inset-0 pointer-events-none"
               style={{
                 background:
                   'radial-gradient(ellipse 60% 40% at 80% 20%, oklch(0.73 0.12 85 / 6%) 0%, transparent 70%)',
               }}
             />
 
+            {/* Scrollable inner — min-h-full keeps centering on tall screens, py-24 clears the navbar on short screens */}
+            <div className="min-h-full flex flex-col items-center justify-center py-24 relative z-10">
             <motion.ul
               variants={listVariants}
               initial="closed"
               animate="open"
-              className="flex flex-col items-center gap-7 relative z-10"
+              className="flex flex-col items-center gap-5"
             >
               {navbarData.navLinks.map(({ key, href }) => (
                 <motion.li key={key} variants={itemVariants}>
                   <a
                     href={href}
                     onClick={() => setMobileOpen(false)}
-                    className="group block text-[2.2rem] font-extralight tracking-[0.2em] uppercase text-foreground/85 hover:text-primary transition-all duration-250 relative"
+                    className="group block text-[1.6rem] font-extralight tracking-[0.2em] uppercase text-foreground/85 hover:text-primary transition-all duration-250 relative"
                   >
                     {t(key as Parameters<typeof t>[0])}
                     <span className="absolute -bottom-1 left-0 w-0 h-px bg-gradient-to-r from-primary/70 to-transparent transition-all duration-350 group-hover:w-2/3" />
@@ -208,7 +214,7 @@ export default function Navbar() {
               ))}
 
               {/* Divider */}
-              <motion.li variants={itemVariants} className="w-12 h-px bg-[--color-border] my-1" />
+              <motion.li variants={itemVariants} className="w-12 h-px bg-border my-1" />
 
               {/* Lang + CV */}
               <motion.li variants={itemVariants} className="flex items-center gap-4">
@@ -231,6 +237,7 @@ export default function Navbar() {
                 </a>
               </motion.li>
             </motion.ul>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
