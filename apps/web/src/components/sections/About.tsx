@@ -2,10 +2,11 @@
 
 import Image from 'next/image';
 import { useRef } from 'react';
-import { useTranslations } from 'next-intl';
-import { motion, useInView } from 'framer-motion';
+import { useTranslations, useLocale } from 'next-intl';
+import { motion, useInView, useReducedMotion } from 'framer-motion';
 import { HiMapPin, HiEnvelope, HiPhone } from 'react-icons/hi2';
 import { siteConfig } from '@/lib/config';
+import { getData } from '@/lib/data';
 
 const ease = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -27,17 +28,20 @@ const fadeInRight = (delay = 0) => ({
 
 export default function About() {
   const t = useTranslations('About');
+  const locale = useLocale() as 'en' | 'ar';
+  const aboutData = getData('about', locale);
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
+  const reduced = useReducedMotion();
 
   const infoItems = [
-    { icon: HiMapPin,   label: t('infoLabelLocation'), value: siteConfig.location },
-    { icon: HiEnvelope, label: t('infoLabelEmail'),    value: siteConfig.email },
-    { icon: HiPhone,    label: t('infoLabelPhone'),    value: siteConfig.phone },
+    { icon: HiMapPin,   label: t('infoLabelLocation'), value: aboutData.location },
+    { icon: HiEnvelope, label: t('infoLabelEmail'),    value: aboutData.email },
+    { icon: HiPhone,    label: t('infoLabelPhone'),    value: aboutData.phone },
   ];
 
   return (
-    <section ref={ref} id="about" className="relative px-4 pt-12 pb-20 md:px-8 md:pt-16 lg:px-16 xl:px-24 overflow-hidden">
+    <section ref={ref} id="about" className="relative px-4 pt-20 pb-24 md:px-8 md:pt-24 md:pb-28 lg:px-16 xl:px-24 overflow-hidden">
 
       {/* Section number watermark */}
       <div
@@ -123,7 +127,7 @@ export default function About() {
               </motion.div>
 
               {/* Bio paragraphs */}
-              {[1, 2, 3].map((i) => (
+              {aboutData.bio.map((para: string, i: number) => (
                 <motion.div
                   key={i}
                   variants={fadeUp(0.15 + i * 0.1)}
@@ -137,10 +141,10 @@ export default function About() {
                   />
 
                   <p
-                    className="text-foreground/80 leading-[1.95]"
+                    className="text-foreground/78 leading-[1.85]"
                     style={{ fontSize: 'clamp(0.875rem, 1.4vw, 0.975rem)' }}
                   >
-                    {t(`bio_${i}` as Parameters<typeof t>[0])}
+                    {para}
                   </p>
                 </motion.div>
               ))}
@@ -166,24 +170,29 @@ export default function About() {
                 className="grid grid-cols-3 gap-4 sm:gap-8"
               >
                 {siteConfig.stats.map(({ value, labelKey }, i) => (
-                  <div key={labelKey} className="relative group">
+                  <motion.div
+                    key={labelKey}
+                    className="relative group"
+                    whileHover={reduced ? {} : { y: -2 }}
+                    transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                  >
                     {/* Hover glow */}
                     <div className="absolute -inset-3 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                      style={{ background: 'radial-gradient(ellipse, oklch(0.73 0.12 85 / 6%) 0%, transparent 70%)' }}
+                      style={{ background: 'radial-gradient(ellipse, oklch(0.73 0.12 85 / 7%) 0%, transparent 70%)' }}
                     />
                     <span
                       className="text-gold-gradient font-bold block leading-none tabular-nums relative"
-                      style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)' }}
+                      style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.4rem)' }}
                     >
                       {value}
                     </span>
-                    <span className="text-[7.5px] tracking-[0.38em] uppercase text-muted-foreground mt-2 block relative">
+                    <span className="text-[7.5px] tracking-[0.38em] uppercase text-muted-foreground/70 mt-2 block relative">
                       {t(labelKey as Parameters<typeof t>[0])}
                     </span>
                     {i < siteConfig.stats.length - 1 && (
                       <div className="absolute top-1 -end-2 sm:-end-4 w-px h-10 bg-primary/15" />
                     )}
-                  </div>
+                  </motion.div>
                 ))}
               </motion.div>
 
@@ -258,34 +267,40 @@ export default function About() {
             </div>
 
             {/* Glass contact info card */}
-            <div className="glass rounded-2xl p-6 border border-primary/12">
-              <p className="text-[7.5px] tracking-[0.5em] uppercase text-primary/70 mb-5">
+            <div
+              className="glass rounded-2xl p-6"
+              style={{ boxShadow: '0 0 40px oklch(0.73 0.12 85 / 5%), 0 16px 40px oklch(0 0 0 / 30%)' }}
+            >
+              <p className="text-[7.5px] tracking-[0.5em] uppercase text-primary/60 mb-5">
                 {t('contactLabel')}
               </p>
 
               <div className="flex flex-col gap-3.5">
                 {infoItems.map(({ icon: Icon, label, value }) => (
-                  <div key={label} className="flex items-center gap-3.5 group">
-                    <div className="w-8 h-8 rounded-full border border-primary/20 flex items-center justify-center shrink-0 group-hover:border-primary/45 group-hover:bg-primary/[0.06] transition-all duration-300">
-                      <Icon size={12} className="text-primary/55 group-hover:text-primary transition-colors duration-300" />
+                  <div key={label} className="flex items-center gap-3.5 group cursor-default">
+                    <div className="w-8 h-8 rounded-full border border-primary/18 flex items-center justify-center shrink-0 group-hover:border-primary/45 group-hover:bg-primary/[0.08] transition-all duration-300">
+                      <Icon size={12} className="text-primary/50 group-hover:text-primary transition-all duration-300 group-hover:scale-110" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="text-[7px] tracking-[0.32em] uppercase text-muted-foreground/80">{label}</p>
-                      <p className="text-[11.5px] text-foreground truncate mt-0.5">{value}</p>
+                      <p className="text-[7px] tracking-[0.32em] uppercase text-muted-foreground/60 mb-0.5">{label}</p>
+                      <p className="text-[12px] text-foreground/85 truncate font-light tracking-wide">{value}</p>
                     </div>
                   </div>
                 ))}
               </div>
 
               {/* Availability status */}
-              <div className="mt-5 pt-5 border-t border-primary/10 flex items-center gap-2">
-                <span className="relative flex h-1.5 w-1.5 shrink-0">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400" />
-                </span>
-                <span className="text-[7.5px] tracking-[0.32em] uppercase text-primary/70">
-                  {t('available')}
-                </span>
+              <div className="mt-5 pt-5 border-t border-primary/10 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="relative flex h-1.5 w-1.5 shrink-0">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400" />
+                  </span>
+                  <span className="text-[7.5px] tracking-[0.32em] uppercase text-primary/65">
+                    {t('available')}
+                  </span>
+                </div>
+                <div className="w-1.5 h-1.5 rounded-full bg-primary/25 ring-4 ring-primary/8" />
               </div>
             </div>
           </motion.div>

@@ -1,0 +1,26 @@
+{
+  "name": "م. حمزة آفتاب",
+  "roles": [
+    "مهندس ويب وموبايل متكامل",
+    "مهندس ذكاء اصطناعي ومتخصص في نماذج اللغة الكبيرة",
+    "مطور React وNext.js وReact Native",
+    "مهندس Node.js وBun Runtime",
+    "مطور SaaS وتطبيقات مدعومة بالذكاء الاصطناعي",
+    "متخصص في هندسة الواجهات الأمامية",
+    "مهندس JavaScript وTypeScript",
+    "مهندس استدعاء النماذج وسير عمل الذكاء الاصطناعي",
+    "مطور تطبيقات ويب قابلة للتوسع",
+    "مطور Vue.js وNuxt.js"
+  ],
+  "stats": {
+    "years": 3,
+    "projects": 15,
+    "clients": 10
+  },
+  "socialLinks": [
+    { "platform": "github",   "label": "GitHub",   "url": "https://github.com/mhamzaaftab1166" },
+    { "platform": "linkedin", "label": "LinkedIn",  "url": "https://www.linkedin.com/in/hamzaaftab66/" }
+  ],
+  "cvUrl": "/cv/hamza-aftab-cv.pdf",
+  "whatsappNumber": "+971521096471"
+}

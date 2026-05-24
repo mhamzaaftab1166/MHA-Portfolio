@@ -6,7 +6,7 @@ export const siteConfig = {
   firstName: 'Hamza',
   role: 'Full-Stack Engineer & AI Specialist',
   location: 'Dubai, UAE',
-  email: 'hamzaaftab.dev@gmail.com',
+  email: 'mhamzaaftab1166@gmail.com',
   phone: '+971521096471',
   available: true,
   whatsapp: '971521096471',

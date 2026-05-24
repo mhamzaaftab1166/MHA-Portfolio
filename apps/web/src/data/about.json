@@ -1,0 +1,22 @@
+{
+  "name": "M. Hamza Aftab",
+  "avatarUrl": "/images/avatar.jpg",
+  "location": "Dubai, UAE",
+  "email": "mhamzaaftab1166@gmail.com",
+  "phone": "+971521096471",
+  "cvUrl": "/cv/hamza-aftab-cv.pdf",
+  "stats": {
+    "years": 3,
+    "projects": 15,
+    "clients": 10
+  },
+  "bio": [
+    "I'm a Full-Stack Web & Mobile Engineer and AI Specialist based in Dubai, focused on building scalable, high-performance digital products with modern technologies and clean user experiences.",
+    
+    "My expertise spans the JavaScript/TypeScript ecosystem, including React.js, Next.js, React Native, Vue.js, Nuxt.js, Node.js, and Bun. I develop production-grade web platforms, mobile apps, SaaS products, and backend systems optimized for scalability, performance, and maintainability.",
+    
+    "I also specialize in AI-powered applications and LLM integrations, working with tools like Claude AI, OpenAI APIs, prompt engineering workflows, and AI-first product experiences. I enjoy building intelligent applications that combine strong engineering foundations with practical AI capabilities.",
+    
+    "Beyond development, I lead engineering initiatives, mentor developers, review architecture decisions, and collaborate closely with startups and businesses across the UAE and international markets to turn ideas into scalable products."
+  ]
+}

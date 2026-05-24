@@ -1,0 +1,46 @@
+{
+  "featured": [
+    {
+      "id": "project_1",
+      "title": "AI-Powered SaaS Dashboard",
+      "description": "A full-stack SaaS platform with AI-driven analytics, real-time data visualization, and Claude AI integration for automated insights.",
+      "imageUrl": "/images/projects/project1.png",
+      "liveUrl": "https://project1.com",
+      "githubUrl": "https://github.com/YOUR_USERNAME/project1",
+      "techStack": ["Next.js", "TypeScript", "Claude AI", "PostgreSQL", "Tailwind CSS"],
+      "tags": ["AI", "SaaS", "Full-Stack"]
+    },
+    {
+      "id": "project_2",
+      "title": "E-Commerce Mobile App",
+      "description": "Cross-platform mobile app built with React Native for a UAE-based retailer, featuring AR product preview and multi-currency checkout.",
+      "imageUrl": "/images/projects/project2.png",
+      "liveUrl": null,
+      "githubUrl": "https://github.com/YOUR_USERNAME/project2",
+      "techStack": ["React Native", "Expo", "Node.js", "Stripe", "Redis"],
+      "tags": ["Mobile", "E-Commerce", "React Native"]
+    },
+    {
+      "id": "project_3",
+      "title": "Real Estate Platform",
+      "description": "A bilingual real estate listing platform for the Dubai market with map integration, advanced filters, and lead management.",
+      "imageUrl": "/images/projects/project3.png",
+      "liveUrl": "https://project3.com",
+      "githubUrl": null,
+      "techStack": ["Vue.js", "Nuxt.js", "Laravel", "MySQL", "Google Maps API"],
+      "tags": ["Real Estate", "Bilingual", "Vue.js"]
+    }
+  ],
+  "other": [
+    {
+      "id": "project_4",
+      "title": "Portfolio Template",
+      "description": "Open-source portfolio template with dark/gold luxury aesthetic, bilingual support, and Framer Motion animations.",
+      "imageUrl": null,
+      "liveUrl": "https://portfolio.com",
+      "githubUrl": "https://github.com/YOUR_USERNAME/portfolio",
+      "techStack": ["Next.js", "Tailwind CSS", "Framer Motion"],
+      "tags": ["Open Source", "Design"]
+    }
+  ]
+}

@@ -2,13 +2,12 @@
 
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence, useReducedMotion, useInView } from 'framer-motion';
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa6';
 import { HiArrowDownRight, HiArrowDownTray } from 'react-icons/hi2';
 import { siteConfig } from '@/lib/config';
-
-const ROLE_COUNT = 5;
+import { getData } from '@/lib/data';
 const ease = [0.22, 1, 0.36, 1] as [number, number, number, number];
 const easeIn = [0.32, 0, 0.67, 0] as [number, number, number, number];
 
@@ -42,19 +41,19 @@ function Particle({ x, delay, duration }: { x: string; delay: number; duration: 
 
 export default function Hero() {
   const t = useTranslations('Hero');
+  const locale = useLocale() as 'en' | 'ar';
+  const heroData = getData('hero', locale);
   const reduced = useReducedMotion();
   const [roleIndex, setRoleIndex] = useState(0);
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true });
 
-  const roles = Array.from({ length: ROLE_COUNT }, (_, i) =>
-    t(`role_${i}` as Parameters<typeof t>[0])
-  );
+  const roles = heroData.roles;
 
   useEffect(() => {
-    const id = setInterval(() => setRoleIndex(i => (i + 1) % ROLE_COUNT), 3400);
+    const id = setInterval(() => setRoleIndex(i => (i + 1) % roles.length), 3400);
     return () => clearInterval(id);
-  }, []);
+  }, [roles.length]);
 
   return (
     <section
@@ -227,7 +226,7 @@ export default function Hero() {
               className="flex flex-wrap gap-2 justify-center lg:justify-start max-w-[38rem]">
               {siteConfig.techStack.map((tech) => (
                 <span key={tech}
-                  className="text-[8.5px] tracking-[0.25em] uppercase px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-muted-foreground hover:border-primary/45 hover:text-primary hover:bg-primary/[0.07] hover:shadow-[0_0_14px_oklch(0.73_0.12_85/12%)] transition-all duration-300 cursor-default">
+                  className="text-[8.5px] tracking-[0.25em] uppercase px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-muted-foreground/80 hover:border-primary/50 hover:text-primary hover:bg-primary/[0.08] hover:shadow-[0_0_16px_oklch(0.73_0.12_85/15%)] hover:-translate-y-px transition-all duration-300 cursor-default inline-block">
                   {tech}
                 </span>
               ))}
@@ -246,7 +245,7 @@ export default function Hero() {
                 <span className="relative z-10">{t('cta_work')}</span>
                 <HiArrowDownRight className="relative z-10 w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
                 {/* shine sweep */}
-                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-600 ease-in-out" />
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
               </a>
 
               {/* Ghost CTA */}
@@ -293,26 +292,28 @@ export default function Hero() {
           {/* ─── Photo column ─── */}
           <motion.div
             className="flex items-center justify-center order-1 lg:order-2"
-            initial={{ opacity: 0, scale: 0.88, filter: 'blur(14px)' }}
+            initial={{ opacity: 0, scale: 0.92, filter: 'blur(14px)' }}
             animate={inView ? { opacity: 1, scale: 1, filter: 'blur(0px)' } : {}}
             transition={{ duration: 1.1, delay: 0.3, ease }}
           >
-            <div className="scale-[0.65] sm:scale-[0.88] lg:scale-100 origin-center">
-            <div className="relative flex items-center justify-center">
-
-              {/* Slow outer dashed ring */}
+            {/* Responsive sizing via CSS variables */}
+            <div
+              className="relative flex items-center justify-center"
+              style={{ '--photo-size': '220px' } as React.CSSProperties}
+            >
+              {/* Outer dashed ring — responsive */}
               <motion.div
                 className="absolute rounded-full border border-dashed border-primary/15"
-                style={{ width: 340, height: 340 }}
+                style={{ width: 'min(340px, 72vw)', height: 'min(340px, 72vw)' }}
                 animate={reduced ? {} : { rotate: 360 }}
                 transition={{ duration: 50, repeat: Infinity, ease: 'linear' }}
               />
 
-              {/* Counter-rotating arc */}
+              {/* Counter-rotating arc — responsive */}
               <motion.div
                 className="absolute rounded-full"
                 style={{
-                  width: 294, height: 294,
+                  width: 'min(294px, 62vw)', height: 'min(294px, 62vw)',
                   background: `conic-gradient(from 0deg, oklch(0.73 0.12 85 / 30%) 0deg, transparent 70deg, transparent 290deg, oklch(0.73 0.12 85 / 30%) 360deg)`,
                   borderRadius: '50%',
                   WebkitMask: 'radial-gradient(farthest-side, transparent calc(100% - 1.5px), white calc(100% - 1.5px))',
@@ -322,50 +323,51 @@ export default function Hero() {
                 transition={{ duration: 28, repeat: Infinity, ease: 'linear' }}
               />
 
-              {/* Glow pool */}
+              {/* Glow pool — responsive */}
               <div className="absolute rounded-full"
                 style={{
-                  width: 260, height: 260,
-                  background: 'radial-gradient(circle, oklch(0.73 0.12 85 / 20%) 0%, transparent 70%)',
+                  width: 'min(260px, 55vw)', height: 'min(260px, 55vw)',
+                  background: 'radial-gradient(circle, oklch(0.73 0.12 85 / 22%) 0%, transparent 70%)',
                   filter: 'blur(30px)',
                 }}
               />
 
-              {/* Photo */}
+              {/* Photo — responsive, no scale hack */}
               <div className="relative overflow-hidden rounded-full"
                 style={{
-                  width: 235, height: 235,
+                  width: 'min(235px, 50vw)', height: 'min(235px, 50vw)',
                   boxShadow: [
-                    '0 0 0 1.5px oklch(0.73 0.12 85 / 45%)',
-                    '0 0 0 8px oklch(0.73 0.12 85 / 5%)',
-                    '0 0 55px oklch(0.73 0.12 85 / 25%)',
-                    '0 0 110px oklch(0.73 0.12 85 / 8%)',
+                    '0 0 0 1.5px oklch(0.73 0.12 85 / 50%)',
+                    '0 0 0 8px oklch(0.73 0.12 85 / 6%)',
+                    '0 0 60px oklch(0.73 0.12 85 / 28%)',
+                    '0 0 120px oklch(0.73 0.12 85 / 10%)',
                   ].join(', '),
                 }}>
                 <Image
                   src="/images/MHA.png"
                   alt="Muhammad Hamza Aftab"
                   fill
-                  sizes="235px"
+                  sizes="(max-width: 480px) 50vw, 235px"
                   className="object-cover object-top"
                   priority
                 />
               </div>
 
-              {/* Compass dots */}
+              {/* Compass dots — responsive offset */}
               {[0, 90, 180, 270].map((deg) => (
                 <div key={deg}
-                  className="absolute w-2 h-2 rounded-full bg-primary/50 ring-[3px] ring-primary/15"
+                  className="absolute w-[7px] h-[7px] rounded-full bg-primary/55 ring-[3px] ring-primary/15"
                   style={{
                     top: '50%', left: '50%',
-                    transform: `translate(-50%, -50%) rotate(${deg}deg) translateY(-148px)`,
+                    transform: `translate(-50%, -50%) rotate(${deg}deg) translateY(min(-148px, -31.5vw))`,
                   }}
                 />
               ))}
 
               {/* Status badge below photo */}
               <motion.div
-                className="absolute -bottom-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/25 bg-[oklch(0.058_0.006_285/94%)] backdrop-blur-sm whitespace-nowrap"
+                className="absolute -bottom-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-[oklch(0.07_0.006_285/95%)] backdrop-blur-sm whitespace-nowrap"
+                style={{ boxShadow: '0 0 20px oklch(0.73 0.12 85 / 15%)' }}
                 initial={{ opacity: 0, y: 8 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 1.3, duration: 0.6 }}
@@ -379,7 +381,6 @@ export default function Hero() {
                 </span>
               </motion.div>
             </div>
-            </div>
           </motion.div>
 
         </div>
@@ -389,17 +390,20 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0, y: 8 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ delay: 3.2, duration: 1 }}
+        transition={{ delay: 2.2, duration: 0.9 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2.5"
       >
-        <span className="text-[7px] tracking-[0.55em] uppercase text-muted-foreground">
+        <span className="text-[7px] tracking-[0.55em] uppercase text-muted-foreground/60">
           {t('scrollHint')}
         </span>
-        <div className="w-[18px] h-[30px] rounded-full border border-muted-foreground/20 flex justify-center items-start pt-2">
+        <div
+          className="w-[18px] h-[30px] rounded-full border border-primary/25 flex justify-center items-start pt-[7px]"
+          style={{ boxShadow: '0 0 10px oklch(0.73 0.12 85 / 10%)' }}
+        >
           <motion.div
-            className="w-0.5 h-2 rounded-full bg-primary/60"
-            animate={reduced ? {} : { y: [0, 10, 0], opacity: [1, 0.2, 1] }}
-            transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+            className="w-[3px] h-[7px] rounded-full bg-primary/70"
+            animate={reduced ? {} : { y: [0, 10, 0], opacity: [1, 0.15, 1] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
           />
         </div>
       </motion.div>

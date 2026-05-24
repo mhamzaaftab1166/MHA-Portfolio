@@ -1,0 +1,86 @@
+{
+  "jobs": [
+    {
+      "id": "job_1",
+      "company": "Green Field Management Consultancy",
+      "companyInitials": "GFMC",
+      "role": "Full-Stack Team Lead",
+      "type": "Full-time",
+      "location": "Dubai, UAE",
+      "startDate": "2025-07",
+      "endDate": null,
+      "current": true,
+      "bullets": [
+        "Leading end-to-end web and mobile development using React, Next.js, React Native, and Node.js.",
+        "Working with both MongoDB and SQL databases to design scalable backend systems.",
+        "Mentoring developers, conducting code reviews, and guiding architectural and technical decisions with stakeholders."
+      ],
+      "techStack": [
+        "React",
+        "Next.js",
+        "React Native",
+        "Node.js",
+        "MongoDB",
+        "SQL"
+      ]
+    },
+    {
+      "id": "job_2",
+      "company": "Salina Limited Company",
+      "companyInitials": "SLC",
+      "role": "Full Stack Developer - MERN",
+      "type": "Full-time",
+      "location": "Ajman, UAE",
+      "startDate": "2024-01",
+      "endDate": "2025-07",
+      "current": false,
+      "bullets": [
+        "Developed high-performance web and mobile applications using React, Next.js, and React Native (Expo).",
+        "Built scalable RESTful APIs and backend services using Node.js.",
+        "Managed and optimized both MongoDB and SQL databases for production applications."
+      ],
+      "techStack": [
+        "React",
+        "Next.js",
+        "React Native",
+        "Node.js",
+        "MongoDB",
+        "SQL"
+      ]
+    },
+    {
+      "id": "job_3",
+      "company": "National Textile University",
+      "companyInitials": "NTU",
+      "role": "Teacher's Assistant - Data Structures & Algorithms",
+      "type": "Part-time",
+      "location": "Faisalabad, Pakistan",
+      "startDate": "2024-01",
+      "endDate": "2024-06",
+      "current": false,
+      "bullets": [
+        "Explained data structures and algorithms using practical, real-world examples.",
+        "Assisted students in debugging code, error analysis, and problem-solving techniques.",
+        "Supported academic understanding of core computer science concepts."
+      ],
+      "techStack": ["C++", "DSA"]
+    },
+    {
+      "id": "job_4",
+      "company": "Qbatch",
+      "companyInitials": "QB",
+      "role": "Software Engineer Intern",
+      "type": "Internship",
+      "location": "Faisalabad, Pakistan",
+      "startDate": "2023-06",
+      "endDate": "2023-08",
+      "current": false,
+      "bullets": [
+        "Built full-stack web applications using modern JavaScript technologies.",
+        "Performed large-scale data extraction and web scraping tasks.",
+        "Collaborated using Git and GitHub to ensure code quality and version control."
+      ],
+      "techStack": ["JavaScript", "React", "Node.js", "Git", "Web Scraping"]
+    }
+  ]
+}

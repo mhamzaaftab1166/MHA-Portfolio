@@ -1,0 +1,12 @@
+{
+  "web3formsKey": "2d28acd5-e73e-4b22-b204-b3e89cef5d2b",
+  "email": "mhamzaaftab1166@gmail.com",
+  "whatsappNumber": "+971521096471",
+  "location": "دبي، الإمارات",
+  "availability": true,
+  "responseTime": "يرد عادةً خلال 24 ساعة",
+  "socialLinks": [
+    { "platform": "github",   "label": "GitHub",   "url": "https://github.com/mhamzaaftab1166",      "icon": "SiGithub" },
+    { "platform": "linkedin", "label": "LinkedIn",  "url": "https://www.linkedin.com/in/hamzaaftab66/", "icon": "SiLinkedin" }
+  ]
+}

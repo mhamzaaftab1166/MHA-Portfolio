@@ -11,9 +11,8 @@ import {
   useMotionValueEvent,
 } from 'framer-motion';
 import { Link, usePathname } from '@/i18n/navigation';
+import { getData } from '@/lib/data';
 import { siteConfig } from '@/lib/config';
-
-const NAV_KEYS = ['about', 'skills', 'experience', 'projects', 'contact'] as const;
 
 const menuVariants = {
   closed: {
@@ -46,6 +45,7 @@ const itemVariants = {
 export default function Navbar() {
   const t = useTranslations('Navbar');
   const locale = useLocale();
+  const navbarData = getData('navbar', locale as 'en' | 'ar');
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -66,8 +66,13 @@ export default function Navbar() {
     <>
       {/* ── Scroll progress bar ─────────────────────────────────── */}
       <motion.div
-        style={{ scaleX: progressScaleX, transformOrigin: 'left' }}
-        className="fixed top-0 left-0 right-0 z-[60] h-[2px] bg-primary origin-left"
+        style={{
+          scaleX: progressScaleX,
+          transformOrigin: 'left',
+          background: 'linear-gradient(to right, oklch(0.49 0.10 75), oklch(0.73 0.12 85), oklch(0.83 0.11 90))',
+          boxShadow: '0 0 8px oklch(0.73 0.12 85 / 55%), 0 0 18px oklch(0.73 0.12 85 / 25%)',
+        }}
+        className="fixed top-0 left-0 right-0 z-[60] h-[2px] origin-left"
       />
 
       {/* ── Main Navbar ─────────────────────────────────────────── */}
@@ -102,14 +107,15 @@ export default function Navbar() {
 
           {/* ── Desktop nav links ─── */}
           <nav className="hidden md:flex items-center gap-7 absolute left-1/2 -translate-x-1/2">
-            {NAV_KEYS.map((key) => (
+            {navbarData.navLinks.map(({ key, href }) => (
               <a
                 key={key}
-                href={`#${key}`}
-                className="relative group text-[11px] tracking-[0.22em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
+                href={href}
+                className="relative group text-[11px] tracking-[0.22em] uppercase text-muted-foreground/80 hover:text-foreground transition-colors duration-300"
               >
-                {t(key)}
-                <span className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
+                {t(key as Parameters<typeof t>[0])}
+                {/* Underline: center-out, gold */}
+                <span className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent transition-all duration-350 group-hover:w-full" />
               </a>
             ))}
           </nav>
@@ -127,10 +133,10 @@ export default function Navbar() {
 
             {/* Download CV */}
             <a
-              href={siteConfig.cv}
+              href={navbarData.cvUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden md:inline-flex items-center gap-1.5 text-[10px] tracking-[0.25em] uppercase px-4 py-1.5 rounded-full border border-primary text-primary hover:bg-primary hover:text-[oklch(0.058_0.006_285)] transition-all duration-300 glow-gold"
+              className="hidden md:inline-flex items-center gap-1.5 text-[10px] tracking-[0.25em] uppercase px-4 py-1.5 rounded-full border border-primary/70 text-primary/90 hover:bg-primary hover:text-[oklch(0.058_0.006_285)] hover:border-primary transition-all duration-300 hover:shadow-[0_0_24px_oklch(0.73_0.12_85/35%)]"
             >
               <span>{t('downloadCV')}</span>
             </a>
@@ -188,14 +194,15 @@ export default function Navbar() {
               animate="open"
               className="flex flex-col items-center gap-7 relative z-10"
             >
-              {NAV_KEYS.map((key) => (
+              {navbarData.navLinks.map(({ key, href }) => (
                 <motion.li key={key} variants={itemVariants}>
                   <a
-                    href={`#${key}`}
+                    href={href}
                     onClick={() => setMobileOpen(false)}
-                    className="block text-[2rem] font-light tracking-[0.22em] uppercase text-foreground hover:text-primary transition-colors duration-200"
+                    className="group block text-[2.2rem] font-extralight tracking-[0.2em] uppercase text-foreground/85 hover:text-primary transition-all duration-250 relative"
                   >
-                    {t(key)}
+                    {t(key as Parameters<typeof t>[0])}
+                    <span className="absolute -bottom-1 left-0 w-0 h-px bg-gradient-to-r from-primary/70 to-transparent transition-all duration-350 group-hover:w-2/3" />
                   </a>
                 </motion.li>
               ))}
@@ -214,7 +221,7 @@ export default function Navbar() {
                   {t('langToggle')}
                 </Link>
                 <a
-                  href={siteConfig.cv}
+                  href={navbarData.cvUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMobileOpen(false)}

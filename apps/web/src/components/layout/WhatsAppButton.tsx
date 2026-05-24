@@ -4,10 +4,13 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { FaWhatsapp } from 'react-icons/fa6';
-import { siteConfig } from '@/lib/config';
+import { useLocale } from 'next-intl';
+import { getData } from '@/lib/data';
 
 export default function WhatsAppButton() {
   const t = useTranslations('Contact');
+  const locale = useLocale() as 'en' | 'ar';
+  const { whatsappNumber } = getData('contact', locale);
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -37,7 +40,7 @@ export default function WhatsAppButton() {
 
       {/* Button */}
       <motion.a
-        href={`https://wa.me/${siteConfig.whatsapp}`}
+        href={`https://wa.me/${whatsappNumber.replace(/\D/g, '')}`}
         target="_blank"
         rel="noopener noreferrer"
         aria-label={t('whatsapp')}

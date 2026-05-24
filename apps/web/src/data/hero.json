@@ -1,0 +1,34 @@
+{
+  "name": "M. Hamza Aftab",
+  "roles": [
+    "Full-Stack Web & Mobile Engineer",
+    "AI Engineer & LLM Integration Specialist",
+    "React, Next.js & React Native Developer",
+    "Node.js & Bun Runtime Engineer",
+    "AI-Powered SaaS & App Builder",
+    "Frontend Architecture Specialist",
+    "JavaScript & TypeScript Engineer",
+    "Prompt Engineer & AI Workflow Developer",
+    "Scalable Web Application Developer",
+    "Vue.js & Nuxt.js Developer"
+  ],
+  "stats": {
+    "years": 3,
+    "projects": 15,
+    "clients": 10
+  },
+  "socialLinks": [
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/mhamzaaftab1166"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/hamzaaftab66/"
+    }
+  ],
+  "cvUrl": "/cv/hamza-aftab-cv.pdf",
+  "whatsappNumber": "+971521096471"
+}

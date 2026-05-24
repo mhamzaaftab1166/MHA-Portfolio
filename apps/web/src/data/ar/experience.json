@@ -1,0 +1,72 @@
+{
+  "jobs": [
+    {
+      "id": "job_1",
+      "company": "Green Field Management Consultancy",
+      "companyInitials": "GFMC",
+      "role": "قائد فريق التطوير المتكامل",
+      "type": "دوام كامل",
+      "location": "دبي، الإمارات",
+      "startDate": "2025-07",
+      "endDate": null,
+      "current": true,
+      "bullets": [
+        "قيادة التطوير الشامل للويب والجوال باستخدام React وNext.js وReact Native وNode.js.",
+        "العمل مع قواعد بيانات MongoDB وSQL لتصميم أنظمة خلفية قابلة للتوسع.",
+        "إرشاد المطورين وإجراء مراجعات الكود وتوجيه القرارات المعمارية والتقنية مع أصحاب المصلحة."
+      ],
+      "techStack": ["React", "Next.js", "React Native", "Node.js", "MongoDB", "SQL"]
+    },
+    {
+      "id": "job_2",
+      "company": "Salina Limited Company",
+      "companyInitials": "SLC",
+      "role": "مطور Full Stack - MERN",
+      "type": "دوام كامل",
+      "location": "عجمان، الإمارات",
+      "startDate": "2024-01",
+      "endDate": "2025-07",
+      "current": false,
+      "bullets": [
+        "تطوير تطبيقات ويب وجوال عالية الأداء باستخدام React وNext.js وReact Native (Expo).",
+        "بناء واجهات برمجية RESTful وخدمات خلفية قابلة للتوسع باستخدام Node.js.",
+        "إدارة وتحسين قواعد بيانات MongoDB وSQL لتطبيقات الإنتاج."
+      ],
+      "techStack": ["React", "Next.js", "React Native", "Node.js", "MongoDB", "SQL"]
+    },
+    {
+      "id": "job_3",
+      "company": "National Textile University",
+      "companyInitials": "NTU",
+      "role": "مساعد أستاذ - هياكل البيانات والخوارزميات",
+      "type": "دوام جزئي",
+      "location": "فيصل آباد، باكستان",
+      "startDate": "2024-01",
+      "endDate": "2024-06",
+      "current": false,
+      "bullets": [
+        "شرح هياكل البيانات والخوارزميات باستخدام أمثلة عملية من الواقع.",
+        "مساعدة الطلاب في تصحيح الأخطاء البرمجية وتقنيات حل المشكلات.",
+        "دعم الفهم الأكاديمي لمفاهيم علوم الحاسوب الأساسية."
+      ],
+      "techStack": ["C++", "DSA"]
+    },
+    {
+      "id": "job_4",
+      "company": "Qbatch",
+      "companyInitials": "QB",
+      "role": "متدرب مهندس برمجيات",
+      "type": "تدريب",
+      "location": "فيصل آباد، باكستان",
+      "startDate": "2023-06",
+      "endDate": "2023-08",
+      "current": false,
+      "bullets": [
+        "بناء تطبيقات ويب متكاملة باستخدام تقنيات JavaScript الحديثة.",
+        "تنفيذ مهام استخراج البيانات الضخمة وكشط الويب.",
+        "التعاون باستخدام Git وGitHub لضمان جودة الكود والتحكم في الإصدارات."
+      ],
+      "techStack": ["JavaScript", "React", "Node.js", "Git", "Web Scraping"]
+    }
+  ]
+}

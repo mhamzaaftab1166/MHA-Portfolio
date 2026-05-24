@@ -17,23 +17,11 @@
     "scrollHint": "Scroll to explore",
     "statsYears": "Years Experience",
     "statsProjects": "Projects Delivered",
-    "statsClients": "Happy Clients",
-    "role_0": "Full-Stack Engineer & AI Specialist",
-    "role_1": "React & React Native Expert",
-    "role_2": "Vue.js & Nuxt.js Architect",
-    "role_3": "AI-Powered App Builder",
-    "role_4": "Claude AI Integration Expert"
+    "statsClients": "Happy Clients"
   },
   "About": {
     "title": "About Me",
     "sectionLabel": "Who I Am",
-    "bio": "A passionate full-stack engineer based in Dubai, crafting modern web applications with attention to detail and performance.",
-    "bio_1": "A full-stack engineer and AI specialist based in Dubai with 3+ years of experience shipping high-performance web and mobile products. I thrive at the intersection of clean architecture and exceptional user experience.",
-    "bio_2": "My core stack spans the React ecosystem — Next.js, React Native, and Vue.js/Nuxt.js — backed by Node.js services and TypeScript throughout. I build fast, accessible, production-grade applications for startups and scale-ups in the UAE and beyond.",
-    "bio_3": "More recently I've been deep in AI-powered product development, integrating Claude AI and other LLMs to ship intelligent applications that move the needle. I also lead engineering teams, set technical direction, and mentor developers.",
-    "stats_experience": "Years Experience",
-    "stats_projects": "Projects Delivered",
-    "stats_clients": "Happy Clients",
     "statsYears": "Years Experience",
     "statsProjects": "Projects Delivered",
     "statsClients": "Happy Clients",
@@ -46,28 +34,35 @@
   },
   "Skills": {
     "title": "Skills & Technologies",
-    "subtitle": "Technologies I work with"
+    "subtitle": "Technologies I work with",
+    "sectionLabel": "What I Know"
   },
   "Experience": {
     "title": "Work Experience",
-    "subtitle": "My professional journey"
+    "subtitle": "My professional journey",
+    "sectionLabel": "Where I've Worked",
+    "present": "Present"
   },
   "Projects": {
     "title": "Projects",
     "subtitle": "A selection of my recent work",
+    "sectionLabel": "What I've Built",
     "viewProject": "View Project",
     "viewCode": "View Code"
   },
   "Contact": {
     "title": "Get In Touch",
     "subtitle": "Have a project in mind? Let's talk.",
+    "sectionLabel": "Say Hello",
     "name": "Your Name",
     "email": "Your Email",
     "message": "Your Message",
     "send": "Send Message",
     "sending": "Sending...",
     "whatsapp": "Chat on WhatsApp",
-    "location": "Dubai, UAE"
+    "location": "Dubai, UAE",
+    "responseTime": "Usually responds within 24 hours",
+    "available": "Available for new projects"
   },
   "Footer": {
     "rights": "All rights reserved."

@@ -1,0 +1,46 @@
+{
+  "featured": [
+    {
+      "id": "project_1",
+      "title": "لوحة تحكم SaaS مدعومة بالذكاء الاصطناعي",
+      "description": "منصة SaaS متكاملة مع تحليلات مدعومة بالذكاء الاصطناعي، وتصوير بيانات فوري، ودمج Claude AI لرؤى تلقائية.",
+      "imageUrl": "/images/projects/project1.png",
+      "liveUrl": "https://project1.com",
+      "githubUrl": "https://github.com/YOUR_USERNAME/project1",
+      "techStack": ["Next.js", "TypeScript", "Claude AI", "PostgreSQL", "Tailwind CSS"],
+      "tags": ["ذكاء اصطناعي", "SaaS", "فول ستاك"]
+    },
+    {
+      "id": "project_2",
+      "title": "تطبيق تجارة إلكترونية للجوال",
+      "description": "تطبيق موبايل متعدد المنصات بُني بـ React Native لمتجر إماراتي، مع معاينة المنتجات بالواقع المعزز ودفع متعدد العملات.",
+      "imageUrl": "/images/projects/project2.png",
+      "liveUrl": null,
+      "githubUrl": "https://github.com/YOUR_USERNAME/project2",
+      "techStack": ["React Native", "Expo", "Node.js", "Stripe", "Redis"],
+      "tags": ["موبايل", "تجارة إلكترونية", "React Native"]
+    },
+    {
+      "id": "project_3",
+      "title": "منصة عقارية",
+      "description": "منصة عقارية ثنائية اللغة لسوق دبي مع تكامل الخرائط والفلاتر المتقدمة وإدارة العملاء المحتملين.",
+      "imageUrl": "/images/projects/project3.png",
+      "liveUrl": "https://project3.com",
+      "githubUrl": null,
+      "techStack": ["Vue.js", "Nuxt.js", "Laravel", "MySQL", "Google Maps API"],
+      "tags": ["عقارات", "ثنائي اللغة", "Vue.js"]
+    }
+  ],
+  "other": [
+    {
+      "id": "project_4",
+      "title": "قالب محفظة أعمال",
+      "description": "قالب محفظة أعمال مفتوح المصدر بتصميم فاخر داكن/ذهبي، مع دعم ثنائي اللغة وحركات Framer Motion.",
+      "imageUrl": null,
+      "liveUrl": "https://portfolio.com",
+      "githubUrl": "https://github.com/YOUR_USERNAME/portfolio",
+      "techStack": ["Next.js", "Tailwind CSS", "Framer Motion"],
+      "tags": ["مفتوح المصدر", "تصميم"]
+    }
+  ]
+}
