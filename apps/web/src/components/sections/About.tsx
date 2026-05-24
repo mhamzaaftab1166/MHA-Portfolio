@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
-import { HiMapPin, HiEnvelope, HiPhone } from 'react-icons/hi2';
+import { HiMapPin, HiEnvelope, HiPhone, HiLanguage, HiShieldCheck } from 'react-icons/hi2';
 import { siteConfig } from '@/lib/config';
 import { getData } from '@/lib/data';
 
@@ -142,7 +142,7 @@ export default function About() {
                   />
 
                   <p
-                    className="text-foreground/78 leading-[1.85]"
+                    className="text-foreground/88 leading-[1.85]"
                     style={{ fontSize: 'clamp(0.875rem, 1.4vw, 0.975rem)' }}
                   >
                     {para}
@@ -283,8 +283,8 @@ export default function About() {
                       <Icon size={12} className="text-primary/50 group-hover:text-primary transition-all duration-300 group-hover:scale-110" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="text-[7px] tracking-[0.32em] uppercase text-muted-foreground/60 mb-0.5">{label}</p>
-                      <p className="text-[12px] text-foreground/85 truncate font-light tracking-wide">{value}</p>
+                      <p className="text-[7px] tracking-[0.32em] uppercase text-muted-foreground/75 mb-0.5">{label}</p>
+                      <p className="text-[12px] text-foreground/92 truncate font-light tracking-wide">{value}</p>
                     </div>
                   </div>
                 ))}
@@ -307,6 +307,98 @@ export default function About() {
           </motion.div>
 
         </div>
+
+        {/* ── Bottom row: Team Contributions · Languages ── */}
+        <motion.div
+          variants={fadeUp(0.65)}
+          initial="hidden"
+          animate={inView ? 'show' : 'hidden'}
+          className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-5 mt-14"
+        >
+
+          {/* Team Contributions */}
+          <div
+            className="glass rounded-2xl p-7 border border-primary/10 relative overflow-hidden"
+            style={{ boxShadow: '0 0 40px oklch(0.73 0.12 85 / 4%), 0 16px 40px oklch(0 0 0 / 25%)' }}
+          >
+            {/* Gold top-edge accent */}
+            <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+
+            <div className="flex items-center gap-3 mb-6">
+              <div
+                className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0"
+                style={{ background: 'oklch(0.73 0.12 85 / 12%)', border: '1px solid oklch(0.73 0.12 85 / 28%)' }}
+              >
+                <HiShieldCheck size={15} className="text-primary" />
+              </div>
+              <p className="text-[8px] tracking-[0.45em] uppercase text-primary/80 font-medium">{t('supportsLabel')}</p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
+              {(aboutData.supports as string[]).map((item: string) => (
+                <div key={item} className="flex items-start gap-3 group">
+                  <div
+                    className="w-5 h-5 rounded-md flex items-center justify-center shrink-0 mt-[1px]"
+                    style={{ background: 'oklch(0.73 0.12 85 / 10%)', border: '1px solid oklch(0.73 0.12 85 / 20%)' }}
+                  >
+                    <div className="w-1.5 h-1.5 rotate-45 bg-primary/70 group-hover:bg-primary transition-colors duration-200" />
+                  </div>
+                  <span className="text-[12.5px] text-foreground/88 leading-[1.6]">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Languages */}
+          <div
+            className="glass rounded-2xl p-7 border border-primary/10 relative overflow-hidden"
+            style={{ boxShadow: '0 0 40px oklch(0.73 0.12 85 / 4%), 0 16px 40px oklch(0 0 0 / 25%)' }}
+          >
+            {/* Gold top-edge accent */}
+            <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+
+            <div className="flex items-center gap-3 mb-6">
+              <div
+                className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0"
+                style={{ background: 'oklch(0.73 0.12 85 / 12%)', border: '1px solid oklch(0.73 0.12 85 / 28%)' }}
+              >
+                <HiLanguage size={15} className="text-primary" />
+              </div>
+              <p className="text-[8px] tracking-[0.45em] uppercase text-primary/80 font-medium">{t('languagesLabel')}</p>
+            </div>
+
+            <div className="flex flex-col gap-4">
+              {(aboutData.languages as { name: string; level: string }[]).map(({ name, level }, i) => (
+                <div key={name}>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-[13px] text-foreground/95 font-semibold">{name}</span>
+                    <span
+                      className="text-[7.5px] tracking-[0.3em] uppercase px-3 py-1 rounded-full font-medium"
+                      style={{
+                        background: 'oklch(0.73 0.12 85 / 14%)',
+                        border: '1px solid oklch(0.73 0.12 85 / 32%)',
+                        color: 'oklch(0.73 0.12 85)',
+                      }}
+                    >
+                      {level}
+                    </span>
+                  </div>
+                  <div className="h-[3px] rounded-full bg-white/[0.06] overflow-hidden">
+                    <motion.div
+                      className="h-full rounded-full"
+                      style={{ background: 'linear-gradient(to right, oklch(0.49 0.10 75 / 80%), oklch(0.73 0.12 85))' }}
+                      initial={{ width: '0%' }}
+                      animate={inView ? { width: i === 1 ? '100%' : '88%' } : { width: '0%' }}
+                      transition={{ duration: 1.1, delay: 0.7 + i * 0.15, ease }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </motion.div>
+
       </div>
     </section>
   );

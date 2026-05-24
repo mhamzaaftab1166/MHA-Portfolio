@@ -3,6 +3,7 @@
     "about": "عني",
     "skills": "المهارات",
     "experience": "الخبرة",
+    "education": "التعليم",
     "projects": "المشاريع",
     "contact": "اتصل بي",
     "downloadCV": "تحميل السيرة الذاتية",
@@ -30,7 +31,9 @@
     "contactLabel": "معلومات التواصل",
     "infoLabelLocation": "الموقع",
     "infoLabelEmail": "البريد الإلكتروني",
-    "infoLabelPhone": "الهاتف"
+    "infoLabelPhone": "الهاتف",
+    "supportsLabel": "مساهمات الفريق",
+    "languagesLabel": "اللغات"
   },
   "Skills": {
     "title": "المهارات والتقنيات",
@@ -42,6 +45,11 @@
     "subtitle": "مسيرتي المهنية",
     "sectionLabel": "أين عملت",
     "present": "حتى الآن"
+  },
+  "Education": {
+    "title": "التعليم والتكريم",
+    "sectionLabel": "الخلفية الأكاديمية",
+    "honorsLabel": "الجوائز والتكريمات"
   },
   "Projects": {
     "title": "المشاريع",

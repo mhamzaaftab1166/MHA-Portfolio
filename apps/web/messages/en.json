@@ -3,6 +3,7 @@
     "about": "About",
     "skills": "Skills",
     "experience": "Experience",
+    "education": "Education",
     "projects": "Projects",
     "contact": "Contact",
     "downloadCV": "Download CV",
@@ -30,7 +31,9 @@
     "contactLabel": "Contact Info",
     "infoLabelLocation": "Location",
     "infoLabelEmail": "Email",
-    "infoLabelPhone": "Phone"
+    "infoLabelPhone": "Phone",
+    "supportsLabel": "Team Contributions",
+    "languagesLabel": "Languages"
   },
   "Skills": {
     "title": "Skills & Technologies",
@@ -42,6 +45,11 @@
     "subtitle": "My professional journey",
     "sectionLabel": "Where I've Worked",
     "present": "Present"
+  },
+  "Education": {
+    "title": "Education & Honors",
+    "sectionLabel": "Academic Background",
+    "honorsLabel": "Honors & Awards"
   },
   "Projects": {
     "title": "Projects",

@@ -1,0 +1,32 @@
+{
+  "entries": [
+    {
+      "id": "ntu",
+      "period": "2020 – 2024",
+      "institution": "National Textile University",
+      "degree": "Bachelor's in Information Technology",
+      "location": "Faisalabad, Pakistan"
+    },
+    {
+      "id": "pgc",
+      "period": "2018 – 2020",
+      "institution": "Punjab Group of Colleges",
+      "degree": "Intermediate – Pre-Engineering",
+      "location": "Pakistan"
+    }
+  ],
+  "honors": [
+    {
+      "id": "gold-medal",
+      "icon": "medal",
+      "title": "Gold Medalist",
+      "description": "Awarded for achieving the highest academic performance in the Bachelor of Information Technology program."
+    },
+    {
+      "id": "laptop",
+      "icon": "laptop",
+      "title": "PM Laptop Scheme 2023–24",
+      "description": "Awarded a laptop through the PM Laptop Scheme 2023–24 based on high credit scores."
+    }
+  ]
+}

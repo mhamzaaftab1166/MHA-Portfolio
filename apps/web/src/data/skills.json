@@ -54,6 +54,26 @@
       ]
     },
     {
+      "id": "soft",
+      "label": "Soft Skills",
+      "skills": [
+        { "name": "Project Management", "icon": "SiJira",        "level": 90 },
+        { "name": "Leadership",         "icon": "SiLinkedin",    "level": 88 },
+        { "name": "Teamwork",           "icon": "SiSlack",       "level": 95 },
+        { "name": "Problem Solving",    "icon": "SiHackerrank",  "level": 92 },
+        { "name": "Adaptability",       "icon": "SiNotion",      "level": 90 },
+        { "name": "Work Ethic",         "icon": "SiClockify",    "level": 95 }
+      ]
+    },
+    {
+      "id": "platforms",
+      "label": "Platforms",
+      "skills": [
+        { "name": "Windows",  "icon": "SiWindows11", "level": 95 },
+        { "name": "macOS",    "icon": "SiApple",     "level": 88 }
+      ]
+    },
+    {
       "id": "tools",
       "label": "Tools",
       "skills": [

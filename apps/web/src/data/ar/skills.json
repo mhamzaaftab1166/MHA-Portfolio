@@ -54,6 +54,26 @@
       ]
     },
     {
+      "id": "soft",
+      "label": "المهارات الشخصية",
+      "skills": [
+        { "name": "إدارة المشاريع", "icon": "SiJira",       "level": 90 },
+        { "name": "القيادة",        "icon": "SiLinkedin",   "level": 88 },
+        { "name": "العمل الجماعي", "icon": "SiSlack",       "level": 95 },
+        { "name": "حل المشكلات",   "icon": "SiHackerrank",  "level": 92 },
+        { "name": "التكيف",        "icon": "SiNotion",      "level": 90 },
+        { "name": "أخلاقيات العمل","icon": "SiClockify",   "level": 95 }
+      ]
+    },
+    {
+      "id": "platforms",
+      "label": "الأنظمة",
+      "skills": [
+        { "name": "Windows",  "icon": "SiWindows11", "level": 95 },
+        { "name": "macOS",    "icon": "SiApple",     "level": 88 }
+      ]
+    },
+    {
       "id": "tools",
       "label": "الأدوات",
       "skills": [

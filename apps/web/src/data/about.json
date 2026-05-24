@@ -10,6 +10,23 @@
     "projects": 15,
     "clients": 10
   },
+  "softSkills": [
+    "Project Management", "Teamwork", "Leadership", "Problem Solving",
+    "Adaptability & Flexibility", "Conflict Resolution", "Work Ethic", "Interpersonal Skills"
+  ],
+  "supports": [
+    "Developed with JavaScript frameworks",
+    "Resolved team conflicts",
+    "Maintained and optimized code",
+    "Performed unit, integration & e2e testing",
+    "Collaborated on code quality",
+    "Documented processes"
+  ],
+  "languages": [
+    { "name": "English", "level": "Fluent" },
+    { "name": "Urdu",    "level": "Native" },
+    { "name": "Hindi",   "level": "Fluent" }
+  ],
   "bio": [
     "I'm a Full-Stack Web & Mobile Engineer and AI Specialist based in Dubai, focused on building scalable, high-performance digital products with modern technologies and clean user experiences.",
     
