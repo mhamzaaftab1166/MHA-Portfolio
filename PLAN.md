@@ -12,49 +12,61 @@ MHA-Portfolio/                        ← workspace root (run all commands here)
 ├── apps/
 │   ├── web/                          ← Next.js 16 portfolio  ✅
 │   │   ├── messages/
-│   │   │   ├── en.json               ✅ all EN strings (Hero, About, Skills…)
+│   │   │   ├── en.json               ✅ all EN strings (Navbar, Hero, About, Skills, Experience, Contact, Footer)
 │   │   │   └── ar.json               ✅ all AR strings + RTL
 │   │   ├── public/
 │   │   │   ├── images/
 │   │   │   │   └── MHA.png           ✅ profile photo added
-│   │   │   └── cv.pdf                ← drop CV here when ready
+│   │   │   └── cv/
+│   │   │       └── hamza-aftab-cv.pdf  ← drop CV here when ready
 │   │   └── src/
 │   │       ├── app/
 │   │       │   ├── layout.tsx        ✅ root pass-through
 │   │       │   ├── globals.css       ✅ Dubai dark palette + utilities
 │   │       │   └── [locale]/
-│   │       │       ├── layout.tsx    ✅ html/body, fonts, dir, NextIntlClientProvider
-│   │       │       └── page.tsx      ✅ renders Hero (more sections coming)
+│   │       │       ├── layout.tsx    ✅ html/body, fonts, dir, NextIntlClientProvider, metadata
+│   │       │       └── page.tsx      ✅ Hero→About→Skills→Experience→Contact + SectionDivider
 │   │       ├── components/
 │   │       │   ├── layout/
-│   │       │   │   ├── Navbar.tsx    ✅ scroll-progress, glass, mobile menu, lang toggle
-│   │       │   │   ├── Footer.tsx    ✅ logo, nav, social icons
-│   │       │   │   └── WhatsAppButton.tsx  ✅ fixed, pulse ring, tooltip
+│   │       │   │   ├── Navbar.tsx    ✅ data-driven, scroll-progress, glass, mobile menu (fixed), lang toggle
+│   │       │   │   ├── Footer.tsx    ✅ data-driven, logo, nav, social icons
+│   │       │   │   └── WhatsAppButton.tsx  ✅ data-driven, fixed, pulse ring, tooltip
 │   │       │   ├── sections/
-│   │       │   │   ├── Hero.tsx      ✅ two-column, photo frame, role ticker, stats, CTAs
-│   │       │   │   ├── About.tsx     ← Phase 3 next
-│   │       │   │   ├── Skills.tsx    ← Phase 3
-│   │       │   │   ├── Experience.tsx← Phase 3
-│   │       │   │   ├── Projects.tsx  ← Phase 3
-│   │       │   │   └── Contact.tsx   ← Phase 3
+│   │       │   │   ├── Hero.tsx      ✅ two-column, photo frame, role ticker (10 roles), 4 icon social links
+│   │       │   │   ├── About.tsx     ✅ timeline bio (4 paras), stats, glass info card, RTL-aware animation
+│   │       │   │   ├── Skills.tsx    ✅ category tabs, animated level bars, react-icons/si
+│   │       │   │   ├── Experience.tsx ✅ vertical gold timeline, 4 jobs, tech stack pills
+│   │       │   │   ├── Projects.tsx  ← DEFERRED (next phase)
+│   │       │   │   └── Contact.tsx   ✅ Web3Forms integration, success/error states
 │   │       │   └── ui/               ✅ shadcn/ui components
+│   │       ├── data/
+│   │       │   ├── hero.json         ✅ name, roles (10), stats, social links, cvUrl, whatsappNumber
+│   │       │   ├── about.json        ✅ bio (4 paras), location, email, phone, cvUrl, stats
+│   │       │   ├── skills.json       ✅ 5 categories, 34 skills with icon + level
+│   │       │   ├── experience.json   ✅ 4 jobs (GFMC, SLC, NTU, QB) with bullets + techStack
+│   │       │   ├── contact.json      ✅ email, whatsapp, location, web3formsKey, socialLinks
+│   │       │   ├── navbar.json       ✅ cvUrl, navLinks
+│   │       │   └── ar/               ✅ Arabic mirrors of all above
 │   │       ├── i18n/
 │   │       │   ├── routing.ts        ✅ locales: ['en','ar'], default: 'en'
 │   │       │   ├── navigation.ts     ✅ Link, usePathname, useRouter
 │   │       │   └── request.ts        ✅ server-side message loader
 │   │       ├── lib/
-│   │       │   ├── config.ts         ✅ siteConfig — name, socials, phone, stats, tech
+│   │       │   ├── config.ts         ✅ siteConfig — name, socials, phone, stats, tech stack
+│   │       │   ├── data.ts           ✅ getData(key, locale) — locale-aware JSON loader
 │   │       │   └── utils.ts          ✅ shadcn cn() utility
 │   │       └── proxy.ts              ✅ next-intl locale middleware (Next.js 16)
 │   ├── api/                          ← Backend (placeholder, Hono/Bun — future)
 │   │   └── src/index.ts              ← placeholder only
 │   └── types/                        ✅ @mha/types — shared TS types
 │       └── src/index.ts              ✅ ContactFormPayload, Project, ApiResponse
-├── .gitignore                        ✅ monorepo-aware
-├── .gitattributes                    ✅ LF line endings
-├── .vscode/settings.json             ✅ hides node_modules/.next from Explorer
+├── CLAUDE.md                         ✅ AI assistant instructions (up to date)
+├── PLAN.md                           ✅ this file
+├── .gitignore                        ✅
+├── .gitattributes                    ✅
+├── .vscode/settings.json             ✅
 ├── package.json                      ✅ Bun workspace root
-└── bun.lock                          ✅ single shared lockfile
+└── bun.lock                          ✅
 ```
 
 ---
@@ -74,6 +86,7 @@ MHA-Portfolio/                        ← workspace root (run all commands here)
 | Icons | Lucide React | 1.16.0 |
 | Fonts | Geist (EN) + Cairo (AR) | via next/font |
 | Language | TypeScript | 5.x |
+| Contact Form | Web3Forms | free, no backend |
 | Deployment | Vercel + GoDaddy Domain | — |
 
 ---
@@ -93,17 +106,28 @@ Border:       oklch(0.73  0.12  85 / 18%)
 
 ### CSS Utilities
 ```css
-.text-gold-gradient   /* gradient text: gold-light → gold */
-.glass                /* backdrop-blur + gold border */
+.text-gold-gradient   /* gradient text: gold-dark → gold → gold-light */
+.glass                /* backdrop-blur + dark surface + gold border */
 .glow-gold            /* gold box-shadow */
 .section-padding      /* consistent section px/py */
-.animate-cursor-blink /* blinking | cursor */
+.animate-cursor-blink /* blinking | cursor in role ticker */
+.animate-node-pulse   /* timeline node pulse for current job */
 .animate-whatsapp-pulse
 ```
 
-### Fonts
-- **English (LTR):** Geist — auto-switched via `html[dir="ltr"]`
-- **Arabic (RTL):** Cairo — auto-switched via `html[dir="rtl"]`
+### Section Visual Pattern
+Every section follows this pattern:
+- Faint section number watermark (top-end, opacity ~2%)
+- Dot grid background (opacity ~5%)
+- Diagonal gold streak accent
+- Section header row: `0X` number + short line + label text + extending line
+
+### ⚠️ CSS Variable Gotcha
+`@theme inline` in globals.css means `--color-*` variables are inlined at build and **do not exist as CSS custom properties** in the browser. Use Tailwind utilities directly:
+```
+✅ bg-background   ✅ bg-border   ✅ text-foreground
+❌ bg-[--color-background]   ← resolves to nothing (transparent)
+```
 
 ---
 
@@ -118,27 +142,38 @@ Border:       oklch(0.73  0.12  85 / 18%)
 
 ### Phase 2 — Core Layout  ✅ COMPLETE
 - [x] Navbar — scroll-progress bar, glass on scroll, mobile hamburger + overlay, lang toggle, Download CV
-- [x] Footer — logo, nav links, social icons (GitHub/LinkedIn/Twitter/Email), copyright
-- [x] WhatsAppButton — floating fixed, pulse ring, hover tooltip, RTL-aware (`end-6`)
+- [x] Footer — logo, nav links, social icons
+- [x] WhatsAppButton — floating fixed, pulse ring, hover tooltip, RTL-aware
 - [x] All wired into `[locale]/layout.tsx`
 
-### Phase 3 — Sections  🔄 IN PROGRESS
-- [x] `Hero.tsx` — two-column (text + photo), animated background, role ticker, stats panel, CTAs, social row
-- [ ] `About.tsx` — photo + bio, skills overview, download CV
-- [ ] `Skills.tsx` — categorized cards with icons
-- [ ] `Experience.tsx` — vertical timeline
-- [ ] `Projects.tsx` — card grid with links
-- [ ] `Contact.tsx` — form + social links + WhatsApp CTA
-- [ ] Assemble all in `[locale]/page.tsx`
+### Phase 3 — Content Sections  ✅ COMPLETE (except Projects)
+- [x] Data layer — `src/data/*.json` (EN) + `src/data/ar/*.json` (AR), `getData(key, locale)`
+- [x] `Hero.tsx` — two-column, photo frame + orbit rings, role ticker (10 roles), stats, 4 icon social buttons
+- [x] `About.tsx` — timeline bio, glass info card, stats, RTL-aware slide-in animation
+- [x] `Skills.tsx` — category tab switcher, animated level bars, react-icons/si dynamic icons
+- [x] `Experience.tsx` — vertical gold timeline, 4 jobs, present badge, tech stack pills
+- [x] `Contact.tsx` — Web3Forms integration, two-column layout, success/error feedback
+- [x] All sections assembled in `[locale]/page.tsx` with SectionDivider
+- [ ] `Projects.tsx` — **DEFERRED** (will be built as its own phase)
 
-### Phase 4 — Polish
-- [ ] Scroll-triggered animations (Framer Motion `whileInView`)
-- [ ] `next/image` optimization across all sections
-- [ ] `generateMetadata` per locale (title, description, OG)
-- [ ] Lighthouse audit (target 90+)
+### Phase 4 — Polish  ✅ COMPLETE
+- [x] Scroll-triggered animations (`useInView`, Framer Motion) across all sections
+- [x] `next/image` optimization (Hero photo, About photo)
+- [x] `generateMetadata` per locale (title, description, OG, Twitter card)
+- [x] UI polish pass (glass backgrounds, gold glows, spacing, typography)
+- [x] Mobile responsiveness pass (Navbar z-index, scroll lock, Experience layout, Contact padding)
+- [ ] Lighthouse audit (target 90+) — pending
 
-### Phase 5 — Deploy
+### Phase 5 — Projects Section  ⏳ NEXT
+- [ ] Design Projects section (section 03 or renumber)
+- [ ] `src/data/projects.json` + `src/data/ar/projects.json`
+- [ ] Add Projects translation keys to `messages/en.json` + `ar.json`
+- [ ] Build `Projects.tsx` — card grid, tech tags, live/repo links
+- [ ] Wire into `[locale]/page.tsx`
+
+### Phase 6 — Deploy  ⏳ PENDING
 - [ ] Push to GitHub
+- [ ] Drop CV PDF at `apps/web/public/cv/hamza-aftab-cv.pdf`
 - [ ] Import in Vercel → Root Directory: `apps/web`
 - [ ] Add GoDaddy domain in Vercel Domains panel
 - [ ] GoDaddy DNS:
@@ -147,6 +182,7 @@ Border:       oklch(0.73  0.12  85 / 18%)
   CNAME www  cname.vercel-dns.com
   ```
 - [ ] SSL auto-provisioned by Vercel ✓
+- [ ] Lighthouse audit after deploy
 
 ---
 
@@ -167,18 +203,19 @@ bun install        # sync all workspace deps
 | # | Item | Status |
 |---|---|---|
 | 1 | Full name | ✅ Muhammad Hamza Aftab |
-| 2 | Display name | ✅ "Muhammad · Hamza Aftab" (two-line hero treatment) |
-| 3 | Role / title | ✅ Senior Full-Stack Engineer |
-| 4 | Tagline / bio | ✅ Added to Hero |
-| 5 | Tech stack | ✅ React, Next.js, RN, Vue, Nuxt, Node, TS, AI/LLM, Claude AI |
+| 2 | Display name | ✅ "Muhammad · Hamza Aftab" (two-line hero) |
+| 3 | Role / title | ✅ 10 rotating roles in hero.json |
+| 4 | Bio paragraphs | ✅ 4 paragraphs in about.json |
+| 5 | Tech stack pills | ✅ in config.ts |
 | 6 | Phone / WhatsApp | ✅ +971 521 096 471 |
-| 7 | Email | ✅ hamzaaftab.dev@gmail.com |
+| 7 | Email | ✅ mhamzaaftab1166@gmail.com |
 | 8 | GitHub | ✅ github.com/mhamzaaftab1166 |
 | 9 | LinkedIn | ✅ linkedin.com/in/hamzaaftab66/ |
-| 10 | Twitter / X | ⏳ provide handle to update |
+| 10 | Twitter / X | ⏳ provide handle to add to contact.json socialLinks |
 | 11 | Profile photo | ✅ apps/web/public/images/MHA.png |
-| 12 | Work experience | ⏳ needed for Experience section |
-| 13 | Projects (3–6) | ⏳ needed for Projects section |
-| 14 | Skills by category | ⏳ needed for Skills section |
-| 15 | GoDaddy domain | ⏳ provide domain name |
-| 16 | CV / Resume PDF | ⏳ drop at apps/web/public/cv.pdf |
+| 12 | Work experience | ✅ 4 jobs in experience.json |
+| 13 | Skills | ✅ 34 skills across 5 categories in skills.json |
+| 14 | Contact info | ✅ Web3Forms key in contact.json |
+| 15 | Projects (3–6) | ⏳ needed for Projects section (Phase 5) |
+| 16 | GoDaddy domain | ⏳ provide domain name for deploy config |
+| 17 | CV / Resume PDF | ⏳ drop at apps/web/public/cv/hamza-aftab-cv.pdf |

@@ -43,6 +43,43 @@ This ensures production-grade, distinctive design — not generic AI output.
 - **CSS utilities**: `.glass`, `.glow-gold`, `.text-gold-gradient`, `.section-padding`
 - **shadcn components**: add with `bunx shadcn@latest add <component>` from `apps/web/`
 
+## Data Layer
+All content is driven by locale-aware JSON files — never hardcode copy in components.
+- **EN source**: `apps/web/src/data/*.json`
+- **AR mirror**: `apps/web/src/data/ar/*.json` (same structure, translated content)
+- **Access**: `getData(key, locale)` from `apps/web/src/lib/data.ts`
+- **Site constants**: `apps/web/src/lib/config.ts` (initials, fullName, stats, social links, etc.)
+- **Web3Forms key**: stored in `contact.json` as `web3formsKey` — no backend needed for contact form
+
+## ⚠️ CSS Variable Gotcha (`@theme inline`)
+`globals.css` uses `@theme inline`, which means `--color-*` theme variables are **inlined at build time and do NOT exist as CSS custom properties in the browser**.
+
+```css
+/* WRONG — var(--color-background) resolves to nothing at runtime */
+bg-[--color-background]
+
+/* CORRECT — use the Tailwind utility (inlined value) */
+bg-background
+
+/* CORRECT — use the raw :root variable (these DO exist at runtime) */
+style={{ backgroundColor: 'var(--background)' }}
+/* or hardcode the oklch value */
+style={{ backgroundColor: 'oklch(0.058 0.006 285)' }}
+```
+
+## ⚠️ Mobile Scroll Lock
+Always lock scroll on `document.documentElement`, never `document.body`:
+```ts
+// Correct — works on iOS Safari
+document.documentElement.style.overflow = open ? 'hidden' : '';
+// Wrong — breaks position:fixed on iOS Safari
+document.body.style.overflow = open ? 'hidden' : '';
+```
+
+## Current Build Status
+Completed: Hero, About, Skills, Experience, Contact, Navbar, Footer, WhatsApp button.
+**Deferred**: Projects section (user explicitly said "we will get back to that").
+
 ## Dev Commands (from repo root)
 ```bash
 bun run dev        # start Next.js (Turbopack) on :3000
