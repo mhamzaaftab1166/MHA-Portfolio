@@ -10,7 +10,7 @@
 
 ## About Me
 
-I'm a **Gold Medalist** Computer Science graduate from NUML (2024) based in **Dubai, UAE**, building production-grade web and mobile applications with a focus on AI integrations and clean, scalable architecture.
+I'm a **Gold Medalist** Computer Science graduate from National Textile University (2024) based in **Dubai, UAE**, building production-grade web and mobile applications with a focus on AI integrations and clean, scalable architecture.
 
 - Currently available for new opportunities
 - 3+ years of professional experience across full-stack, mobile, and AI engineering
@@ -53,23 +53,6 @@ I'm a **Gold Medalist** Computer Science graduate from NUML (2024) based in **Du
 ![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonwebservices&logoColor=white)
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
 ![Jira](https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=jira&logoColor=white)
-
----
-
-## GitHub Stats
-
-<div align="center">
-
-<img height="180em" src="https://github-readme-stats.vercel.app/api?username=mhamzaaftab1166&show_icons=true&theme=dark&bg_color=0A0A0F&title_color=C9A84C&icon_color=C9A84C&text_color=F5F0E8&border_color=C9A84C30&hide_border=false&count_private=true" />
-<img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=mhamzaaftab1166&layout=compact&theme=dark&bg_color=0A0A0F&title_color=C9A84C&text_color=F5F0E8&border_color=C9A84C30&langs_count=8" />
-
-</div>
-
-<div align="center">
-
-![GitHub Streak](https://streak-stats.demolab.com?user=mhamzaaftab1166&theme=dark&background=0A0A0F&ring=C9A84C&fire=C9A84C&currStreakLabel=C9A84C&sideLabels=F5F0E8&currStreakNum=F5F0E8&sideNums=F5F0E8&dates=8A8599&border=C9A84C30)
-
-</div>
 
 ---
 
