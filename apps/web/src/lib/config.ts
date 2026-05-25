@@ -14,7 +14,7 @@ export const siteConfig = {
     github: 'https://github.com/mhamzaaftab1166',
     linkedin: 'https://linkedin.com/in/hamzaaftab66/',
   },
-  cv: '/cv.pdf',
+  cv: '/cv/hamza-aftab-cv.pdf',
   stats: [
     { value: '3+', labelKey: 'statsYears' },
     { value: '15+', labelKey: 'statsProjects' },

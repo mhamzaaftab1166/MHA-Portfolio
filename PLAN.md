@@ -164,21 +164,27 @@ Every section follows this pattern:
 - [x] UI polish pass (glass backgrounds, gold glows, spacing, typography)
 - [x] Mobile responsiveness pass (Navbar z-index, scroll lock, Experience layout)
 - [x] Text visibility pass (opacity bumped on bio, contact info, degree, honor descriptions)
-- [ ] Lighthouse audit (target 90+) — pending after deploy
+- [x] Experience: show 2 jobs by default — View More / View Less toggle
+- [x] Projects: featured always visible — other projects behind View More / View Less toggle
+- [x] Hero mobile: scroll indicator hidden on small screens (prevented icon overlap)
+- [x] Experience mobile: card top row stacks vertically (date no longer overlaps role)
+- [x] Contact form: full validation (required, min-length, email regex, touched state, per-field errors)
+- [ ] Lighthouse audit (target 90+)
 
-### Phase 5 — Deploy  ⏳ NEXT
-- [ ] Drop CV PDF at `apps/web/public/cv/hamza-aftab-cv.pdf`
+### Phase 5 — Deploy  ✅ COMPLETE
+- [x] CV PDF at `apps/web/public/cv/hamza-aftab-cv.pdf` — config.ts path updated
 - [ ] Add project screenshots to `apps/web/public/images/projects/` and set `imageUrl` in `projects.json`
-- [ ] Push to GitHub
-- [ ] Import in Vercel → Root Directory: `apps/web`
-- [ ] Add GoDaddy domain in Vercel Domains panel
-- [ ] GoDaddy DNS:
+- [x] Pushed to GitHub
+- [x] Deployed on Vercel (Root Directory: `apps/web`)
+- [x] Custom domain `mhamzaaftab.work` added in Vercel Domains panel
+- [x] Namecheap DNS:
   ```
   A     @    76.76.21.21
   CNAME www  cname.vercel-dns.com
   ```
-- [ ] SSL auto-provisioned by Vercel ✓
-- [ ] Lighthouse audit after deploy
+- [x] SSL auto-provisioned by Vercel ✅
+- **Live URL:** https://mhamzaaftab.work/en
+- [ ] Lighthouse audit — run now that site is live, target 90+
 
 ---
 
@@ -217,6 +223,6 @@ bun install        # sync all workspace deps
 | 17 | Team contributions | ✅ 6 items in about.json |
 | 18 | Projects | ✅ 7 projects in projects.json (3 featured + 4 other) |
 | 19 | Project screenshots | ⏳ drop PNGs in public/images/projects/, set imageUrl |
-| 20 | CV / Resume PDF | ⏳ drop at apps/web/public/cv/hamza-aftab-cv.pdf |
-| 21 | GoDaddy domain | ⏳ provide domain name for deploy config |
+| 20 | CV / Resume PDF | ✅ apps/web/public/cv/hamza-aftab-cv.pdf |
+| 21 | Domain | ✅ mhamzaaftab.work (Namecheap) → Vercel |
 | 22 | Twitter / X handle | ⏳ provide handle to add to contact.json socialLinks |
