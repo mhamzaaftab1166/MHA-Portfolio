@@ -9,7 +9,7 @@
         { "name": "React Native",  "icon": "SiReact",       "level": 90 },
         { "name": "Redux",         "icon": "SiRedux",       "level": 90 },
         { "name": "React Query",   "icon": "SiReactquery",  "level": 92 },
-        { "name": "Zustand",       "icon": "SiZustand",     "level": 88 },
+        { "name": "Zustand",       "icon": "",              "level": 88 },
         { "name": "Tailwind CSS",  "icon": "SiTailwindcss", "level": 95 },
         { "name": "Material UI",   "icon": "SiMui",         "level": 90 },
         { "name": "Chakra UI",     "icon": "SiChakraui",    "level": 88 },
@@ -17,7 +17,7 @@
         { "name": "JavaScript",    "icon": "SiJavascript",  "level": 96 },
         { "name": "TypeScript",    "icon": "SiTypescript",  "level": 94 },
         { "name": "Vue.js",        "icon": "SiVuedotjs",    "level": 90 },
-        { "name": "Nuxt.js",       "icon": "SiNuxtdotjs",   "level": 85 }
+        { "name": "Nuxt.js",       "icon": "SiNuxt",        "level": 85 }
       ]
     },
     {
@@ -48,7 +48,7 @@
       "id": "testing",
       "label": "الاختبار والجودة",
       "skills": [
-        { "name": "Playwright",    "icon": "SiPlaywright", "level": 82 },
+        { "name": "Playwright",    "icon": "",             "level": 82 },
         { "name": "اختبار الوحدات", "icon": "SiVitest",    "level": 80 },
         { "name": "اختبار APIs",   "icon": "SiPostman",    "level": 86 }
       ]
@@ -58,7 +58,7 @@
       "label": "المهارات الشخصية",
       "skills": [
         { "name": "إدارة المشاريع", "icon": "SiJira",       "level": 90 },
-        { "name": "القيادة",        "icon": "SiLinkedin",   "level": 88 },
+        { "name": "القيادة",        "icon": "FaLinkedinIn", "level": 88 },
         { "name": "العمل الجماعي", "icon": "SiSlack",       "level": 95 },
         { "name": "حل المشكلات",   "icon": "SiHackerrank",  "level": 92 },
         { "name": "التكيف",        "icon": "SiNotion",      "level": 90 },
@@ -69,7 +69,7 @@
       "id": "platforms",
       "label": "الأنظمة",
       "skills": [
-        { "name": "Windows",  "icon": "SiWindows11", "level": 95 },
+        { "name": "Windows",  "icon": "",            "level": 95 },
         { "name": "macOS",    "icon": "SiApple",     "level": 88 }
       ]
     },
@@ -81,7 +81,7 @@
         { "name": "GitHub",    "icon": "SiGithub",       "level": 94 },
         { "name": "Vercel",    "icon": "SiVercel",       "level": 92 },
         { "name": "Socket.IO", "icon": "SiSocketdotio",  "level": 84 },
-        { "name": "AWS",       "icon": "SiAmazonaws",    "level": 85 }
+        { "name": "AWS",       "icon": "FaAws",          "level": 85 }
       ]
     }
   ]

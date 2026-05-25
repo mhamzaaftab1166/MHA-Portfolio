@@ -7,6 +7,6 @@
   "responseTime": "يرد عادةً خلال 24 ساعة",
   "socialLinks": [
     { "platform": "github",   "label": "GitHub",   "url": "https://github.com/mhamzaaftab1166",      "icon": "SiGithub" },
-    { "platform": "linkedin", "label": "LinkedIn",  "url": "https://www.linkedin.com/in/hamzaaftab66/", "icon": "SiLinkedin" }
+    { "platform": "linkedin", "label": "LinkedIn",  "url": "https://www.linkedin.com/in/hamzaaftab66/", "icon": "FaLinkedinIn" }
   ]
 }
