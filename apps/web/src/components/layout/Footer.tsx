@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
-import * as SiIcons from 'react-icons/si';
+import { siIconMap } from '@/lib/icons';
 import { HiEnvelope } from 'react-icons/hi2';
 import { Link } from '@/i18n/navigation';
 import { siteConfig } from '@/lib/config';
@@ -56,7 +56,7 @@ export default function Footer() {
           {/* Social icons */}
           <div className="flex items-center gap-2.5">
             {contactData.socialLinks.map(({ platform, label, url, icon }) => {
-              const Icon = SiIcons[icon as keyof typeof SiIcons] as React.ElementType | undefined;
+              const Icon = siIconMap[icon];
               return (
                 <a
                   key={platform}

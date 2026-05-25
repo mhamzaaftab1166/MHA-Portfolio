@@ -3,7 +3,7 @@
 import { useState, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence, useInView, useReducedMotion } from 'framer-motion';
-import * as SiIcons from 'react-icons/si';
+import { siIconMap } from '@/lib/icons';
 import { getData } from '@/lib/data';
 
 const ease = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -21,7 +21,7 @@ interface Category {
 }
 
 function SkillCard({ skill, index, inView }: { skill: Skill; index: number; inView: boolean }) {
-  const Icon = SiIcons[skill.icon as keyof typeof SiIcons] as React.ElementType | undefined;
+  const Icon = siIconMap[skill.icon];
   const reduced = useReducedMotion();
 
   return (

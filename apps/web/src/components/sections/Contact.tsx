@@ -4,7 +4,7 @@ import { useRef, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion, useInView } from 'framer-motion';
 import { HiMapPin, HiEnvelope, HiExclamationCircle } from 'react-icons/hi2';
-import * as SiIcons from 'react-icons/si';
+import { siIconMap } from '@/lib/icons';
 import { getData } from '@/lib/data';
 
 const ease = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -235,7 +235,7 @@ export default function Contact() {
             {/* Social links */}
             <div className="flex flex-wrap gap-2">
               {(contactData.socialLinks as SocialLink[]).map(link => {
-                const Icon = SiIcons[link.icon as keyof typeof SiIcons] as React.ElementType | undefined;
+                const Icon = siIconMap[link.icon];
                 return (
                   <a
                     key={link.platform}
