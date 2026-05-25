@@ -44,7 +44,9 @@
     "title": "Work Experience",
     "subtitle": "My professional journey",
     "sectionLabel": "Where I've Worked",
-    "present": "Present"
+    "present": "Present",
+    "viewMore": "View More",
+    "viewLess": "View Less"
   },
   "Education": {
     "title": "Education & Honors",
@@ -58,7 +60,9 @@
     "viewProject": "View Live",
     "viewCode": "View Code",
     "otherProjects": "More Projects",
-    "private": "Private / NDA"
+    "private": "Private / NDA",
+    "viewMore": "View More Projects",
+    "viewLess": "Show Less"
   },
   "Contact": {
     "title": "Get In Touch",
@@ -72,7 +76,13 @@
     "whatsapp": "Chat on WhatsApp",
     "location": "Dubai, UAE",
     "responseTime": "Usually responds within 24 hours",
-    "available": "Available for new projects"
+    "available": "Available for new projects",
+    "errorNameRequired": "Name is required",
+    "errorNameMin": "Name must be at least 2 characters",
+    "errorEmailRequired": "Email is required",
+    "errorEmailInvalid": "Please enter a valid email address",
+    "errorMessageRequired": "Message is required",
+    "errorMessageMin": "Message must be at least 10 characters"
   },
   "Footer": {
     "rights": "All rights reserved."

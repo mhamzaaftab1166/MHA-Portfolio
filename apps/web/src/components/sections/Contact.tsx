@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion, useInView } from 'framer-motion';
-import { HiMapPin, HiEnvelope } from 'react-icons/hi2';
+import { HiMapPin, HiEnvelope, HiExclamationCircle } from 'react-icons/hi2';
 import * as SiIcons from 'react-icons/si';
 import { getData } from '@/lib/data';
 
@@ -28,10 +28,46 @@ export default function Contact() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
   const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [touched, setTouched] = useState({ name: false, email: false, message: false });
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
+  function validate(values: typeof form) {
+    const errors: Partial<typeof form> = {};
+    if (!values.name.trim())
+      errors.name = t('errorNameRequired');
+    else if (values.name.trim().length < 2)
+      errors.name = t('errorNameMin');
+    if (!values.email.trim())
+      errors.email = t('errorEmailRequired');
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email.trim()))
+      errors.email = t('errorEmailInvalid');
+    if (!values.message.trim())
+      errors.message = t('errorMessageRequired');
+    else if (values.message.trim().length < 10)
+      errors.message = t('errorMessageMin');
+    return errors;
+  }
+
+  const errors = validate(form);
+  const isValid = Object.keys(errors).length === 0;
+
+  function touch(field: keyof typeof touched) {
+    setTouched(s => ({ ...s, [field]: true }));
+  }
+
+  function inputClass(field: keyof typeof form) {
+    const hasError = touched[field] && errors[field];
+    return [
+      'w-full px-4 py-3 rounded-xl text-[13px] text-foreground/90 bg-white/[0.04] border outline-none transition-all duration-300 placeholder:text-muted-foreground/38 font-light tracking-wide',
+      hasError
+        ? 'border-red-500/60 focus:border-red-500/80 focus:shadow-[0_0_0_3px_oklch(0.628_0.258_29/10%)] bg-red-500/[0.03]'
+        : 'border-white/[0.16] focus:border-primary/55 focus:bg-primary/[0.05] focus:shadow-[0_0_0_3px_oklch(0.73_0.12_85/10%)]',
+    ].join(' ');
+  }
+
   async function handleSubmit() {
-    if (!form.name || !form.email || !form.message) return;
+    setTouched({ name: true, email: true, message: true });
+    if (!isValid) return;
     setStatus('sending');
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
@@ -49,6 +85,7 @@ export default function Contact() {
       if (json.success) {
         setStatus('success');
         setForm({ name: '', email: '', message: '' });
+        setTouched({ name: false, email: false, message: false });
         setTimeout(() => setStatus('idle'), 5000);
       } else {
         setStatus('error');
@@ -228,45 +265,71 @@ export default function Contact() {
               <div className="flex flex-col gap-5">
 
                 {/* Name */}
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-1.5">
                   <label className="text-[7.5px] tracking-[0.45em] uppercase text-muted-foreground/78">
-                    {t('name')}
+                    {t('name')} <span className="text-red-400/70">*</span>
                   </label>
                   <input
                     type="text"
                     value={form.name}
                     onChange={e => setForm(s => ({ ...s, name: e.target.value }))}
-                    className="w-full px-4 py-3 rounded-xl text-[13px] text-foreground/90 bg-white/[0.04] border border-white/[0.16] outline-none focus:border-primary/55 focus:bg-primary/[0.05] focus:shadow-[0_0_0_3px_oklch(0.73_0.12_85/10%)] transition-all duration-300 placeholder:text-muted-foreground/38 font-light tracking-wide"
+                    onBlur={() => touch('name')}
+                    className={inputClass('name')}
                     placeholder="Your full name"
                   />
+                  {touched.name && errors.name && (
+                    <span className="flex items-center gap-1.5 text-[10px] text-red-400/85 tracking-wide mt-0.5">
+                      <HiExclamationCircle size={12} className="shrink-0" />
+                      {errors.name}
+                    </span>
+                  )}
                 </div>
 
                 {/* Email */}
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-1.5">
                   <label className="text-[7.5px] tracking-[0.45em] uppercase text-muted-foreground/78">
-                    {t('email')}
+                    {t('email')} <span className="text-red-400/70">*</span>
                   </label>
                   <input
                     type="email"
                     value={form.email}
                     onChange={e => setForm(s => ({ ...s, email: e.target.value }))}
-                    className="w-full px-4 py-3 rounded-xl text-[13px] text-foreground/90 bg-white/[0.04] border border-white/[0.16] outline-none focus:border-primary/55 focus:bg-primary/[0.05] focus:shadow-[0_0_0_3px_oklch(0.73_0.12_85/10%)] transition-all duration-300 placeholder:text-muted-foreground/38 font-light tracking-wide"
+                    onBlur={() => touch('email')}
+                    className={inputClass('email')}
                     placeholder="hello@example.com"
                   />
+                  {touched.email && errors.email && (
+                    <span className="flex items-center gap-1.5 text-[10px] text-red-400/85 tracking-wide mt-0.5">
+                      <HiExclamationCircle size={12} className="shrink-0" />
+                      {errors.email}
+                    </span>
+                  )}
                 </div>
 
                 {/* Message */}
-                <div className="flex flex-col gap-2">
-                  <label className="text-[7.5px] tracking-[0.45em] uppercase text-muted-foreground/78">
-                    {t('message')}
-                  </label>
+                <div className="flex flex-col gap-1.5">
+                  <div className="flex items-center justify-between">
+                    <label className="text-[7.5px] tracking-[0.45em] uppercase text-muted-foreground/78">
+                      {t('message')} <span className="text-red-400/70">*</span>
+                    </label>
+                    <span className={`text-[9px] tabular-nums transition-colors duration-200 ${form.message.length < 10 && form.message.length > 0 ? 'text-red-400/70' : 'text-muted-foreground/45'}`}>
+                      {form.message.length}/10
+                    </span>
+                  </div>
                   <textarea
                     rows={5}
                     value={form.message}
                     onChange={e => setForm(s => ({ ...s, message: e.target.value }))}
-                    className="w-full px-4 py-3 rounded-xl text-[13px] text-foreground/90 bg-white/[0.04] border border-white/[0.16] outline-none focus:border-primary/55 focus:bg-primary/[0.05] focus:shadow-[0_0_0_3px_oklch(0.73_0.12_85/10%)] transition-all duration-300 placeholder:text-muted-foreground/38 resize-none font-light tracking-wide leading-relaxed"
+                    onBlur={() => touch('message')}
+                    className={`${inputClass('message')} resize-none leading-relaxed`}
                     placeholder="Tell me about your project..."
                   />
+                  {touched.message && errors.message && (
+                    <span className="flex items-center gap-1.5 text-[10px] text-red-400/85 tracking-wide mt-0.5">
+                      <HiExclamationCircle size={12} className="shrink-0" />
+                      {errors.message}
+                    </span>
+                  )}
                 </div>
 
                 {/* Success message */}
@@ -293,7 +356,7 @@ export default function Contact() {
                   type="button"
                   onClick={handleSubmit}
                   disabled={status === 'sending' || status === 'success'}
-                  className="group relative w-full inline-flex items-center justify-center gap-2.5 text-[9.5px] tracking-[0.38em] uppercase px-8 py-4 rounded-xl font-bold overflow-hidden transition-all duration-300 mt-1 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-[0_0_40px_oklch(0.73_0.12_85/45%)]"
+                  className="group relative w-full inline-flex items-center justify-center gap-2.5 text-[9.5px] tracking-[0.38em] uppercase px-8 py-4 rounded-xl font-bold overflow-hidden transition-all duration-300 mt-1 disabled:opacity-60 disabled:cursor-not-allowed hover:shadow-[0_0_40px_oklch(0.73_0.12_85/45%)]"
                   style={{
                     background: 'oklch(0.73 0.12 85)',
                     color: 'oklch(0.058 0.006 285)',

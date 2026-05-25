@@ -1,10 +1,10 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
-import { motion, useInView, useReducedMotion } from 'framer-motion';
-import { HiArrowTopRightOnSquare, HiLockClosed } from 'react-icons/hi2';
+import { motion, AnimatePresence, useInView, useReducedMotion } from 'framer-motion';
+import { HiArrowTopRightOnSquare, HiLockClosed, HiChevronDown, HiChevronUp } from 'react-icons/hi2';
 import { SiGithub, SiAppstore, SiGoogleplay } from 'react-icons/si';
 import { getData } from '@/lib/data';
 
@@ -154,6 +154,7 @@ export default function Projects() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
   const reduced = useReducedMotion();
+  const [showOther, setShowOther] = useState(false);
 
   return (
     <section ref={ref} id="projects" className="relative px-4 pt-20 pb-24 md:px-8 md:pt-24 md:pb-28 lg:px-16 xl:px-24 overflow-hidden">
@@ -299,73 +300,102 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* ── Other projects ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.55, delay: 0.58, ease }}
-          className="flex items-center gap-5 mb-7"
-        >
-          <div className="w-8 h-px bg-primary/25 shrink-0" />
-          <h3 className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground/82 shrink-0">
-            {t('otherProjects')}
-          </h3>
-          <div className="flex-1 h-px bg-gradient-to-r from-primary/22 to-transparent" />
-        </motion.div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {other.map((project, i) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 24, filter: 'blur(6px)' }}
-              animate={inView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
-              transition={{ duration: 0.6, delay: 0.62 + i * 0.09, ease }}
-              whileHover={reduced ? {} : { y: -3, transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] } }}
-              className="glass rounded-2xl p-6 border border-primary/20 hover:border-primary/38 transition-colors duration-300 flex flex-col gap-4 hover:shadow-[0_12px_36px_oklch(0_0_0/38%),_0_0_22px_oklch(0.73_0.12_85/5%)]"
+        {/* ── View More / View Less button ── */}
+        {other.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.55, delay: 0.58, ease }}
+            className="flex flex-col items-center gap-6"
+          >
+            <button
+              onClick={() => setShowOther(v => !v)}
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-full border border-primary/35 text-[9px] tracking-[0.35em] uppercase text-primary/85 hover:border-primary/65 hover:text-primary hover:bg-primary/[0.08] transition-all duration-300"
             >
-              {/* Tags */}
-              <div className="flex flex-wrap gap-1.5">
-                {project.tags.map(tag => (
-                  <span
-                    key={tag}
-                    className="text-[6.5px] tracking-[0.3em] uppercase px-2 py-0.5 rounded-full bg-white/[0.05] border border-white/[0.16] text-muted-foreground/78"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+              {showOther ? (
+                <>{t('viewLess')}<HiChevronUp size={13} /></>
+              ) : (
+                <>{t('viewMore')}<HiChevronDown size={13} /></>
+              )}
+            </button>
 
-              {/* Title + description */}
-              <div>
-                <h4 className="font-bold text-foreground/95 mb-2" style={{ fontSize: 'clamp(0.95rem, 1.7vw, 1.1rem)' }}>
-                  {project.title}
-                </h4>
-                <p className="text-foreground/88 leading-[1.72]" style={{ fontSize: 'clamp(0.78rem, 1.2vw, 0.85rem)' }}>
-                  {project.description}
-                </p>
-              </div>
+            <AnimatePresence>
+              {showOther && (
+                <motion.div
+                  key="other-projects"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                  className="w-full overflow-hidden"
+                >
+                  {/* Section label */}
+                  <div className="flex items-center gap-5 mb-7">
+                    <div className="w-8 h-px bg-primary/25 shrink-0" />
+                    <h3 className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground/82 shrink-0">
+                      {t('otherProjects')}
+                    </h3>
+                    <div className="flex-1 h-px bg-gradient-to-r from-primary/22 to-transparent" />
+                  </div>
 
-              {/* Role */}
-              <p className="text-[8.5px] tracking-[0.2em] text-primary/88 leading-[1.6]">{project.role}</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {other.map((project, i) => (
+                      <motion.div
+                        key={project.id}
+                        initial={{ opacity: 0, y: 24, filter: 'blur(6px)' }}
+                        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                        transition={{ duration: 0.6, delay: i * 0.09, ease }}
+                        whileHover={reduced ? {} : { y: -3, transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] } }}
+                        className="glass rounded-2xl p-6 border border-primary/20 hover:border-primary/38 transition-colors duration-300 flex flex-col gap-4 hover:shadow-[0_12px_36px_oklch(0_0_0/38%),_0_0_22px_oklch(0.73_0.12_85/5%)]"
+                      >
+                        {/* Tags */}
+                        <div className="flex flex-wrap gap-1.5">
+                          {project.tags.map(tag => (
+                            <span
+                              key={tag}
+                              className="text-[6.5px] tracking-[0.3em] uppercase px-2 py-0.5 rounded-full bg-white/[0.05] border border-white/[0.16] text-muted-foreground/78"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
 
-              {/* Tech stack */}
-              <div className="flex flex-wrap gap-1.5">
-                {project.techStack.map(tech => (
-                  <span
-                    key={tech}
-                    className="text-[7px] tracking-[0.2em] uppercase px-2 py-0.5 rounded-full bg-white/[0.05] border border-white/[0.16] text-muted-foreground/80 hover:border-primary/42 hover:text-primary/90 transition-all duration-200 cursor-default"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
+                        {/* Title + description */}
+                        <div>
+                          <h4 className="font-bold text-foreground/95 mb-2" style={{ fontSize: 'clamp(0.95rem, 1.7vw, 1.1rem)' }}>
+                            {project.title}
+                          </h4>
+                          <p className="text-foreground/88 leading-[1.72]" style={{ fontSize: 'clamp(0.78rem, 1.2vw, 0.85rem)' }}>
+                            {project.description}
+                          </p>
+                        </div>
 
-              <div className="h-px bg-gradient-to-r from-primary/22 to-transparent" />
+                        {/* Role */}
+                        <p className="text-[8.5px] tracking-[0.2em] text-primary/88 leading-[1.6]">{project.role}</p>
 
-              <Actions project={project} t={t} />
-            </motion.div>
-          ))}
-        </div>
+                        {/* Tech stack */}
+                        <div className="flex flex-wrap gap-1.5">
+                          {project.techStack.map(tech => (
+                            <span
+                              key={tech}
+                              className="text-[7px] tracking-[0.2em] uppercase px-2 py-0.5 rounded-full bg-white/[0.05] border border-white/[0.16] text-muted-foreground/80 hover:border-primary/42 hover:text-primary/90 transition-all duration-200 cursor-default"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+
+                        <div className="h-px bg-gradient-to-r from-primary/22 to-transparent" />
+
+                        <Actions project={project} t={t} />
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        )}
 
       </div>
     </section>

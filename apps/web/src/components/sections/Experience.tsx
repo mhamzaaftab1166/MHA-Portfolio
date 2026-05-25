@@ -1,9 +1,9 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import { motion, useInView, useReducedMotion } from 'framer-motion';
-import { HiMapPin, HiBriefcase } from 'react-icons/hi2';
+import { motion, AnimatePresence, useInView, useReducedMotion } from 'framer-motion';
+import { HiMapPin, HiBriefcase, HiChevronDown, HiChevronUp } from 'react-icons/hi2';
 import { getData } from '@/lib/data';
 
 const ease = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -30,6 +30,8 @@ function formatDate(dateStr: string): string {
   });
 }
 
+const VISIBLE_DEFAULT = 2;
+
 export default function Experience() {
   const t = useTranslations('Experience');
   const locale = useLocale() as 'en' | 'ar';
@@ -38,6 +40,10 @@ export default function Experience() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
   const reduced = useReducedMotion();
+  const [showAll, setShowAll] = useState(false);
+
+  const visibleJobs = showAll ? jobs : jobs.slice(0, VISIBLE_DEFAULT);
+  const hasMore = jobs.length > VISIBLE_DEFAULT;
 
   return (
     <section ref={ref} id="experience" className="relative px-4 pt-20 pb-24 md:px-8 md:pt-24 md:pb-28 lg:px-16 xl:px-24 overflow-hidden">
@@ -104,11 +110,13 @@ export default function Experience() {
           </div>
 
           <div className="flex flex-col gap-6">
-            {jobs.map((job, i) => (
+            <AnimatePresence initial={false}>
+            {visibleJobs.map((job, i) => (
               <motion.div
                 key={job.id}
                 initial={{ opacity: 0, x: 28, filter: 'blur(8px)' }}
                 animate={inView ? { opacity: 1, x: 0, filter: 'blur(0px)' } : {}}
+                exit={{ opacity: 0, x: 28, filter: 'blur(8px)' }}
                 transition={{ duration: 0.7, delay: 0.18 + i * 0.12, ease }}
                 className="flex gap-5 items-start"
               >
@@ -131,8 +139,8 @@ export default function Experience() {
                 {/* Card */}
                 <div className="flex-1 glass rounded-2xl p-6 border border-primary/20 hover:border-primary/38 transition-all duration-300 mb-1 hover:shadow-[0_8px_32px_oklch(0_0_0/35%),_0_0_24px_oklch(0.73_0.12_85/6%)]">
 
-                  {/* Top row */}
-                  <div className="flex flex-wrap items-start justify-between gap-4 mb-5">
+                  {/* Top row — stack on mobile, row on sm+ */}
+                  <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between sm:gap-4 mb-5">
                     <div className="flex-1 min-w-0">
 
                       {/* Badges */}
@@ -159,7 +167,7 @@ export default function Experience() {
                     </div>
 
                     {/* Date + location */}
-                    <div className="text-start sm:text-end shrink-0">
+                    <div className="text-start sm:text-end">
                       <p className="text-[10px] tracking-[0.18em] text-muted-foreground font-medium">
                         {formatDate(job.startDate)}&nbsp;—&nbsp;
                         {job.current ? t('present') : job.endDate ? formatDate(job.endDate) : ''}
@@ -200,7 +208,29 @@ export default function Experience() {
                 </div>
               </motion.div>
             ))}
+            </AnimatePresence>
           </div>
+
+          {/* View More / View Less */}
+          {hasMore && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="flex justify-center mt-8"
+            >
+              <button
+                onClick={() => setShowAll(v => !v)}
+                className="inline-flex items-center gap-2 px-7 py-3 rounded-full border border-primary/35 text-[9px] tracking-[0.35em] uppercase text-primary/85 hover:border-primary/65 hover:text-primary hover:bg-primary/[0.08] transition-all duration-300"
+              >
+                {showAll ? (
+                  <>{t('viewLess')}<HiChevronUp size={13} /></>
+                ) : (
+                  <>{t('viewMore')}<HiChevronDown size={13} /></>
+                )}
+              </button>
+            </motion.div>
+          )}
         </div>
 
       </div>

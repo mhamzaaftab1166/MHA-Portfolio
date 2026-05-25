@@ -386,7 +386,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 8 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ delay: 2.2, duration: 0.9 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2.5"
+        className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2.5"
       >
         <span className="text-[7px] tracking-[0.55em] uppercase text-muted-foreground/60">
           {t('scrollHint')}

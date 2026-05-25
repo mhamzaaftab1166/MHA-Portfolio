@@ -44,7 +44,9 @@
     "title": "الخبرة العملية",
     "subtitle": "مسيرتي المهنية",
     "sectionLabel": "أين عملت",
-    "present": "حتى الآن"
+    "present": "حتى الآن",
+    "viewMore": "عرض المزيد",
+    "viewLess": "عرض أقل"
   },
   "Education": {
     "title": "التعليم والتكريم",
@@ -58,7 +60,9 @@
     "viewProject": "عرض المشروع",
     "viewCode": "عرض الكود",
     "otherProjects": "مزيد من المشاريع",
-    "private": "خاص / سري"
+    "private": "خاص / سري",
+    "viewMore": "عرض المزيد من المشاريع",
+    "viewLess": "عرض أقل"
   },
   "Contact": {
     "title": "تواصل معي",
@@ -72,7 +76,13 @@
     "whatsapp": "تحدث على واتساب",
     "location": "دبي، الإمارات",
     "responseTime": "يرد عادةً خلال 24 ساعة",
-    "available": "متاح لمشاريع جديدة"
+    "available": "متاح لمشاريع جديدة",
+    "errorNameRequired": "الاسم مطلوب",
+    "errorNameMin": "يجب أن يكون الاسم حرفين على الأقل",
+    "errorEmailRequired": "البريد الإلكتروني مطلوب",
+    "errorEmailInvalid": "يرجى إدخال عنوان بريد إلكتروني صحيح",
+    "errorMessageRequired": "الرسالة مطلوبة",
+    "errorMessageMin": "يجب أن تحتوي الرسالة على 10 أحرف على الأقل"
   },
   "Footer": {
     "rights": "جميع الحقوق محفوظة."
