@@ -13,7 +13,8 @@
       "bullets": [
         "Leading end-to-end web and mobile development using React, Next.js, React Native, and Node.js.",
         "Working with both MongoDB and SQL databases to design scalable backend systems.",
-        "Mentoring developers, conducting code reviews, and guiding architectural and technical decisions with stakeholders."
+        "Mentoring developers, conducting code reviews, and guiding architectural and technical decisions with stakeholders.",
+        "Building AI-powered conversational chatbots using LLM APIs (Claude, OpenAI) and prompt-engineering workflows."
       ],
       "techStack": [
         "React",
@@ -21,7 +22,10 @@
         "React Native",
         "Node.js",
         "MongoDB",
-        "SQL"
+        "SQL",
+        "Claude API",
+        "OpenAI API",
+        "LLM"
       ]
     },
     {
