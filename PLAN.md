@@ -217,7 +217,7 @@ bun install        # sync all workspace deps
 | 11 | Work experience | ✅ 4 jobs in experience.json |
 | 12 | Skills | ✅ 7 categories in skills.json (incl. Soft Skills, Platforms) |
 | 13 | Education | ✅ NTU (2020–24) + PGC (2018–20) in education.json |
-| 14 | Honors | ✅ Gold Medalist + PM Laptop Scheme in education.json |
+| 14 | Honors | ✅ Gold Medalist (Expected) + PM Laptop Scheme in education.json |
 | 15 | Languages | ✅ English, Urdu, Hindi in about.json |
 | 16 | Soft skills | ✅ 8 skills in about.json + Skills tab |
 | 17 | Team contributions | ✅ 6 items in about.json |

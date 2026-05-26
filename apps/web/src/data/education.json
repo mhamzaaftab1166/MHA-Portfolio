@@ -19,8 +19,8 @@
     {
       "id": "gold-medal",
       "icon": "medal",
-      "title": "Gold Medalist",
-      "description": "Awarded for achieving the highest academic performance in the Bachelor of Information Technology program."
+      "title": "Gold Medalist (Expected)",
+      "description": "Expected to be awarded for achieving the highest academic performance in the Bachelor of Information Technology program."
     },
     {
       "id": "laptop",
