@@ -1,37 +1,6 @@
 {
   "featured": [
     {
-      "id": "project_1",
-      "title": "Ophthall",
-      "description": "A healthcare platform supporting eye care providers with practice management, growth strategies, ophthalmic learning resources, and marketplace solutions.",
-      "imageUrl": null,
-      "liveUrl": "https://www.ophthall.in/",
-      "githubUrl": null,
-      "techStack": [
-        "Next.js",
-        "TypeScript",
-        "React Query",
-        "Tailwind CSS",
-        "Redux",
-        "Node.js",
-        "Express.js",
-        "MySQL"
-      ],
-      "tags": ["Healthcare", "Full-Stack", "Freelance"],
-      "role": "Freelancer — managing frontend development, API integration, and backend APIs."
-    },
-    {
-      "id": "project_2",
-      "title": "KR Institute",
-      "description": "A healthcare education platform providing practical certification courses for licensed professionals across Singapore, UAE, and Bahrain.",
-      "imageUrl": null,
-      "liveUrl": "https://www.krinstitute.sg/",
-      "githubUrl": null,
-      "techStack": ["Next.js", "CSS Modules"],
-      "tags": ["Education", "Healthcare", "Frontend"],
-      "role": "Freelancer — frontend development."
-    },
-    {
       "id": "project_3",
       "title": "Petlays",
       "description": "A pet management mobile application for bookings, live tracking, pet services, and scheduling with real-time functionality and map integrations.",
@@ -52,6 +21,37 @@
       ],
       "tags": ["Mobile App", "Real-Time", "Ongoing"],
       "role": "Team Lead — overseeing frontend development, API integration, and real-time features."
+    },
+    {
+      "id": "project_2",
+      "title": "KR Institute",
+      "description": "A healthcare education platform providing practical certification courses for licensed professionals across Singapore, UAE, and Bahrain.",
+      "imageUrl": null,
+      "liveUrl": "https://www.krinstitute.sg/",
+      "githubUrl": null,
+      "techStack": ["Next.js", "CSS Modules"],
+      "tags": ["Education", "Healthcare", "Frontend"],
+      "role": "Frontend Developer — UI development and implementation."
+    },
+    {
+      "id": "project_1",
+      "title": "Ophthall",
+      "description": "A healthcare platform supporting eye care providers with practice management, growth strategies, ophthalmic learning resources, and marketplace solutions.",
+      "imageUrl": null,
+      "liveUrl": "https://www.ophthall.in/",
+      "githubUrl": null,
+      "techStack": [
+        "Next.js",
+        "TypeScript",
+        "React Query",
+        "Tailwind CSS",
+        "Redux",
+        "Node.js",
+        "Express.js",
+        "MySQL"
+      ],
+      "tags": ["Healthcare", "Full-Stack", "Freelance"],
+      "role": "Full-Stack Developer — end-to-end development covering frontend UI, backend APIs, and third-party integrations."
     }
   ],
   "other": [
@@ -75,12 +75,12 @@
       "githubUrl": null,
       "techStack": ["Next.js", "Tailwind CSS", "React Query"],
       "tags": ["Education", "Law", "Frontend"],
-      "role": "Freelancer — frontend development and API integration."
+      "role": "Frontend Developer — frontend development and API integration."
     },
     {
       "id": "project_6",
-      "title": "Lit.it",
-      "description": "A modern digital platform focused on streamlined online experiences and scalable frontend architecture.",
+      "title": "LIT IT",
+      "description": "A video-sharing platform where users discover, watch, and share content while earning LIT points through interactions like viewing, sharing, and inviting friends.",
       "imageUrl": null,
       "liveUrl": "https://lit.it/",
       "githubUrl": null,

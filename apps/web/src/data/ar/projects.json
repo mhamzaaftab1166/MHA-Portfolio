@@ -1,28 +1,6 @@
 {
   "featured": [
     {
-      "id": "project_1",
-      "title": "Ophthall",
-      "description": "منصة رعاية صحية تدعم مقدمي رعاية العيون في إدارة الممارسة والنمو والتعلم والحلول التجارية.",
-      "imageUrl": null,
-      "liveUrl": "https://www.ophthall.in/",
-      "githubUrl": null,
-      "techStack": ["Next.js", "TypeScript", "React Query", "Tailwind CSS", "Redux", "Node.js", "Express.js", "MySQL"],
-      "tags": ["رعاية صحية", "فول ستاك", "مستقل"],
-      "role": "مستقل — إدارة تطوير الواجهة الأمامية وتكامل API والـ APIs الخلفية."
-    },
-    {
-      "id": "project_2",
-      "title": "KR Institute",
-      "description": "منصة تعليم طبي توفر دورات شهادات عملية للمهنيين المرخصين في سنغافورة والإمارات والبحرين.",
-      "imageUrl": null,
-      "liveUrl": "https://www.krinstitute.sg/",
-      "githubUrl": null,
-      "techStack": ["Next.js", "CSS Modules"],
-      "tags": ["تعليم", "رعاية صحية", "واجهة أمامية"],
-      "role": "مستقل — تطوير الواجهة الأمامية."
-    },
-    {
       "id": "project_3",
       "title": "Petlays",
       "description": "تطبيق موبايل لإدارة الحيوانات الأليفة يشمل الحجوزات والتتبع المباشر وخدمات الحيوانات الأليفة والجدولة مع وظائف فورية وتكامل الخرائط.",
@@ -34,6 +12,28 @@
       "techStack": ["React Native CLI", "React Query", "Zustand", "Node.js", "Express.js", "MongoDB", "Google Maps APIs", "Socket.IO"],
       "tags": ["تطبيق موبايل", "فوري", "جاري"],
       "role": "قائد فريق — الإشراف على تطوير الواجهة الأمامية وتكامل API والميزات الفورية."
+    },
+    {
+      "id": "project_2",
+      "title": "KR Institute",
+      "description": "منصة تعليم طبي توفر دورات شهادات عملية للمهنيين المرخصين في سنغافورة والإمارات والبحرين.",
+      "imageUrl": null,
+      "liveUrl": "https://www.krinstitute.sg/",
+      "githubUrl": null,
+      "techStack": ["Next.js", "CSS Modules"],
+      "tags": ["تعليم", "رعاية صحية", "واجهة أمامية"],
+      "role": "مطور واجهة أمامية — تطوير وتنفيذ واجهة المستخدم."
+    },
+    {
+      "id": "project_1",
+      "title": "Ophthall",
+      "description": "منصة رعاية صحية تدعم مقدمي رعاية العيون في إدارة الممارسة والنمو والتعلم والحلول التجارية.",
+      "imageUrl": null,
+      "liveUrl": "https://www.ophthall.in/",
+      "githubUrl": null,
+      "techStack": ["Next.js", "TypeScript", "React Query", "Tailwind CSS", "Redux", "Node.js", "Express.js", "MySQL"],
+      "tags": ["رعاية صحية", "فول ستاك", "مستقل"],
+      "role": "مطور فول ستاك — تطوير شامل يغطي واجهة المستخدم والـ APIs الخلفية والتكاملات الخارجية."
     }
   ],
   "other": [
@@ -57,12 +57,12 @@
       "githubUrl": null,
       "techStack": ["Next.js", "Tailwind CSS", "React Query"],
       "tags": ["تعليم", "قانون", "واجهة أمامية"],
-      "role": "مستقل — تطوير الواجهة الأمامية وتكامل API."
+      "role": "مطور واجهة أمامية — تطوير الواجهة الأمامية وتكامل API."
     },
     {
       "id": "project_6",
-      "title": "Lit.it",
-      "description": "منصة رقمية حديثة تركز على تجارب الويب المبسطة والهندسة المعمارية للواجهة الأمامية القابلة للتوسع.",
+      "title": "LIT IT",
+      "description": "منصة لمشاركة الفيديو حيث يكتشف المستخدمون المحتوى ويشاهدونه ويشاركونه، مع كسب نقاط LIT من خلال التفاعلات كالمشاهدة والمشاركة ودعوة الأصدقاء.",
       "imageUrl": null,
       "liveUrl": "https://lit.it/",
       "githubUrl": null,
