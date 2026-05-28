@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
 import { HiMapPin, HiEnvelope, HiPhone, HiLanguage, HiShieldCheck } from 'react-icons/hi2';
@@ -9,6 +9,40 @@ import { siteConfig } from '@/lib/config';
 import { getData } from '@/lib/data';
 
 const ease = [0.22, 1, 0.36, 1] as [number, number, number, number];
+
+function CountUp({ value, inView }: { value: string; inView: boolean }) {
+  const reduced = useReducedMotion();
+  const [display, setDisplay] = useState('0');
+
+  useEffect(() => {
+    if (!inView) return;
+    if (reduced) { setDisplay(value); return; }
+    const match = value.match(/^(\d+)(.*)$/);
+    if (!match) { setDisplay(value); return; }
+    const target = parseInt(match[1]);
+    const suffix = match[2] ?? '';
+    let rafId: number;
+    // delay matches parent fade-in: 560ms delay + 800ms duration = 1360ms
+    const startTimeout = setTimeout(() => {
+      const duration = 1400;
+      const start = performance.now();
+      const tick = (now: number) => {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setDisplay(`${Math.round(eased * target)}${suffix}`);
+        if (progress < 1) rafId = requestAnimationFrame(tick);
+      };
+      rafId = requestAnimationFrame(tick);
+    }, 1400);
+    return () => {
+      clearTimeout(startTimeout);
+      cancelAnimationFrame(rafId);
+    };
+  }, [inView, value, reduced]);
+
+  return <>{display}</>;
+}
 
 const fadeUp = (delay = 0) => ({
   hidden: { opacity: 0, y: 32, filter: 'blur(8px)' },
@@ -185,7 +219,7 @@ export default function About() {
                       className="text-gold-gradient font-bold block leading-none tabular-nums relative"
                       style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.4rem)' }}
                     >
-                      {value}
+                      <CountUp value={value} inView={inView} />
                     </span>
                     <span className="text-[7.5px] tracking-[0.38em] uppercase text-muted-foreground/70 mt-2 block relative">
                       {t(labelKey as Parameters<typeof t>[0])}
@@ -222,7 +256,7 @@ export default function About() {
               </div>
 
               <div
-                className="relative overflow-hidden rounded-2xl w-full"
+                className="relative overflow-hidden rounded-2xl w-full group"
                 style={{
                   aspectRatio: '4/5',
                   maxHeight: '420px',
@@ -238,11 +272,11 @@ export default function About() {
                   alt="Muhammad Hamza Aftab"
                   fill
                   sizes="(max-width: 1024px) 90vw, 380px"
-                  className="object-cover object-top"
+                  className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
                 />
 
                 {/* Bottom gradient overlay */}
-                <div className="absolute bottom-0 inset-x-0 h-2/5"
+                <div className="absolute bottom-0 inset-x-0 h-2/5 transition-opacity duration-500 group-hover:opacity-55"
                   style={{ background: 'linear-gradient(to top, oklch(0.058 0.006 285 / 90%), transparent)' }}
                 />
 

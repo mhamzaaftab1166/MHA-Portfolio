@@ -111,29 +111,37 @@ export default function Experience() {
 
           <div className="flex flex-col gap-6">
             <AnimatePresence initial={false}>
-            {visibleJobs.map((job, i) => (
+            {visibleJobs.map((job, i) => {
+              const isViewMore = i >= VISIBLE_DEFAULT;
+              const nodeDelay = isViewMore
+                ? 0.05 + (i - VISIBLE_DEFAULT) * 0.15
+                : 0.38 + (i / Math.max(jobs.length - 1, 1)) * 1.85;
+              return (
               <motion.div
                 key={job.id}
                 initial={{ opacity: 0, x: 28, filter: 'blur(8px)' }}
                 animate={inView ? { opacity: 1, x: 0, filter: 'blur(0px)' } : {}}
                 exit={{ opacity: 0, x: 28, filter: 'blur(8px)' }}
-                transition={{ duration: 0.7, delay: 0.18 + i * 0.12, ease }}
+                transition={{ duration: 0.7, delay: nodeDelay + 0.05, ease }}
                 className="flex gap-5 items-start"
               >
 
                 {/* Timeline node */}
                 <div className="shrink-0 pt-4 z-10">
-                  <div
-                    className={`w-[2.2rem] h-[2.2rem] rounded-full flex items-center justify-center text-[7px] font-bold tracking-tight transition-all duration-300 ${job.current && !reduced ? 'animate-node-pulse' : ''}`}
+                  <motion.div
+                    className={`w-[2.2rem] h-[2.2rem] rounded-full flex items-center justify-center text-[7px] font-bold tracking-tight ${job.current && !reduced ? 'animate-node-pulse' : ''}`}
                     style={{
                       background: job.current ? 'oklch(0.73 0.12 85)' : 'oklch(0.07 0.007 285)',
                       color: job.current ? 'oklch(0.058 0.006 285)' : 'oklch(0.73 0.12 85)',
                       border: `1.5px solid oklch(0.73 0.12 85 / ${job.current ? '70%' : '40%'})`,
                       boxShadow: job.current ? '0 0 22px oklch(0.73 0.12 85 / 40%), 0 0 45px oklch(0.73 0.12 85 / 15%)' : 'none',
                     }}
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={inView ? { scale: [0, 1.3, 1], opacity: 1 } : {}}
+                    transition={{ duration: 0.45, delay: nodeDelay, ease: [0.34, 1.56, 0.64, 1] }}
                   >
                     {job.companyInitials}
-                  </div>
+                  </motion.div>
                 </div>
 
                 {/* Card */}
@@ -186,7 +194,7 @@ export default function Experience() {
                   <ul className="space-y-2.5 mb-5">
                     {job.bullets.map((bullet, j) => (
                       <li key={j} className="flex gap-3 items-start">
-                        <div className="w-[5px] h-[5px] rounded-full bg-primary/50 shrink-0 mt-[0.42rem] ring-[3px] ring-primary/10" />
+                        <div className="w-[5px] h-[5px] rotate-45 bg-primary/50 shrink-0 mt-[0.42rem] ring-[3px] ring-primary/10" />
                         <span className="text-foreground/85 leading-[1.75]" style={{ fontSize: 'clamp(0.8rem, 1.3vw, 0.875rem)' }}>
                           {bullet}
                         </span>
@@ -199,7 +207,7 @@ export default function Experience() {
                     {job.techStack.map(tech => (
                       <span
                         key={tech}
-                        className="text-[7.5px] tracking-[0.22em] uppercase px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.15] text-muted-foreground/82 hover:border-primary/45 hover:text-primary/90 hover:bg-primary/[0.07] transition-all duration-200 cursor-default"
+                        className="text-[7.5px] tracking-[0.22em] uppercase px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.15] text-muted-foreground/82 hover:border-primary/45 hover:text-primary/90 hover:bg-primary/[0.07] hover:shadow-[0_0_14px_oklch(0.73_0.12_85/15%)] transition-all duration-200 cursor-default"
                       >
                         {tech}
                       </span>
@@ -207,7 +215,8 @@ export default function Experience() {
                   </div>
                 </div>
               </motion.div>
-            ))}
+              );
+            })}
             </AnimatePresence>
           </div>
 

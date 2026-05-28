@@ -217,10 +217,10 @@ export default function Projects() {
               whileHover={reduced ? {} : { y: -3, transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] } }}
               className="glass rounded-2xl border border-primary/20 hover:border-primary/40 overflow-hidden transition-colors duration-300 hover:shadow-[0_20px_56px_oklch(0_0_0/45%),_0_0_36px_oklch(0.73_0.12_85/7%)]"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr]">
+              <div className={`grid grid-cols-1 ${i % 2 === 0 ? 'lg:grid-cols-[2fr_3fr]' : 'lg:grid-cols-[3fr_2fr]'}`}>
 
                 {/* Image / Placeholder */}
-                <div className="relative" style={{ minHeight: '240px' }}>
+                <div className={`relative ${i % 2 !== 0 ? 'lg:order-last' : ''}`} style={{ minHeight: '240px' }}>
                   {project.imageUrl ? (
                     <Image
                       src={project.imageUrl}
@@ -233,15 +233,19 @@ export default function Projects() {
                     <ImagePlaceholder tag={project.tags[0]} index={i} inView={inView} />
                   )}
 
-                  {/* Right-edge fade into card on desktop */}
+                  {/* Edge fade — direction flips for alternating layout */}
                   <div
-                    className="hidden lg:block absolute inset-y-0 end-0 w-16 pointer-events-none"
-                    style={{ background: 'linear-gradient(to end, transparent, oklch(0.09 0.009 285 / 90%))' }}
+                    className={`hidden lg:block absolute inset-y-0 w-16 pointer-events-none ${i % 2 !== 0 ? 'start-0' : 'end-0'}`}
+                    style={{
+                      background: i % 2 !== 0
+                        ? 'linear-gradient(to left, transparent, oklch(0.09 0.009 285 / 90%))'
+                        : 'linear-gradient(to right, transparent, oklch(0.09 0.009 285 / 90%))',
+                    }}
                   />
                 </div>
 
                 {/* Content */}
-                <div className="p-7 xl:p-9 flex flex-col justify-between gap-6">
+                <div className={`p-7 xl:p-9 flex flex-col justify-between gap-6 ${i % 2 !== 0 ? 'lg:order-first' : ''}`}>
                   <div>
                     {/* Tags */}
                     <div className="flex flex-wrap gap-1.5 mb-4">
@@ -331,11 +335,12 @@ export default function Projects() {
                 >
                   {/* Section label */}
                   <div className="flex items-center gap-5 mb-7">
-                    <div className="w-8 h-px bg-primary/25 shrink-0" />
-                    <h3 className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground/82 shrink-0">
+                    <div className="w-5 h-px bg-primary/35 shrink-0" />
+                    <div className="w-1.5 h-1.5 rotate-45 bg-primary/45 shrink-0" />
+                    <h3 className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground shrink-0">
                       {t('otherProjects')}
                     </h3>
-                    <div className="flex-1 h-px bg-gradient-to-r from-primary/22 to-transparent" />
+                    <div className="flex-1 h-px bg-gradient-to-r from-primary/20 to-transparent" />
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

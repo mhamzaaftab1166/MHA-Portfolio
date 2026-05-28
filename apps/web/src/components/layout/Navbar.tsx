@@ -49,6 +49,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
   const { scrollY, scrollYProgress } = useScroll();
   const progressScaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
@@ -59,6 +60,22 @@ export default function Navbar() {
     document.documentElement.style.overflow = mobileOpen ? 'hidden' : '';
     return () => { document.documentElement.style.overflow = ''; };
   }, [mobileOpen]);
+
+  // Active section tracking via IntersectionObserver
+  useEffect(() => {
+    const ids = ['hero', 'about', 'skills', 'experience', 'education', 'projects', 'contact'];
+    const observers = ids.map(id => {
+      const el = document.getElementById(id);
+      if (!el) return null;
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActiveSection(id); },
+        { rootMargin: '-25% 0px -65% 0px' }
+      );
+      obs.observe(el);
+      return obs;
+    });
+    return () => observers.forEach(obs => obs?.disconnect());
+  }, []);
 
   const oppositeLocale = locale === 'en' ? 'ar' : 'en';
 
@@ -106,18 +123,21 @@ export default function Navbar() {
           </Link>
 
           {/* ── Desktop nav links ─── */}
-          <nav className="hidden md:flex items-center gap-7 absolute left-1/2 -translate-x-1/2">
-            {navbarData.navLinks.map(({ key, href }) => (
-              <a
-                key={key}
-                href={href}
-                className="relative group text-[11px] tracking-[0.22em] uppercase text-muted-foreground/80 hover:text-foreground transition-colors duration-300"
-              >
-                {t(key as Parameters<typeof t>[0])}
-                {/* Underline: center-out, gold */}
-                <span className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent transition-all duration-350 group-hover:w-full" />
-              </a>
-            ))}
+          <nav className="hidden lg:flex items-center gap-7 absolute left-1/2 -translate-x-1/2">
+            {navbarData.navLinks.map(({ key, href }) => {
+              const sectionId = href.replace('#', '');
+              const isActive = activeSection === sectionId;
+              return (
+                <a
+                  key={key}
+                  href={href}
+                  className={`relative group text-[11px] tracking-[0.22em] uppercase transition-colors duration-300 ${isActive ? 'text-primary' : 'text-muted-foreground/80 hover:text-foreground'}`}
+                >
+                  {t(key as Parameters<typeof t>[0])}
+                  <span className={`absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-px bg-gradient-to-r from-transparent via-primary to-transparent transition-all duration-350 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+                </a>
+              );
+            })}
           </nav>
 
           {/* ── Right actions ─── */}
@@ -126,7 +146,7 @@ export default function Navbar() {
             <Link
               href={pathname}
               locale={oppositeLocale}
-              className="hidden md:inline-flex items-center text-[10px] tracking-[0.25em] uppercase px-3.5 py-1.5 rounded-full border border-[--color-border] text-muted-foreground hover:border-primary hover:text-primary transition-all duration-300"
+              className="hidden lg:inline-flex items-center text-[10px] tracking-[0.25em] uppercase px-3.5 py-1.5 rounded-full border border-[--color-border] text-muted-foreground hover:border-primary hover:text-primary transition-all duration-300"
             >
               {t('langToggle')}
             </Link>
@@ -136,7 +156,7 @@ export default function Navbar() {
               href={navbarData.cvUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden md:inline-flex items-center gap-1.5 text-[10px] tracking-[0.25em] uppercase px-4 py-1.5 rounded-full border border-primary/70 text-primary/90 hover:bg-primary hover:text-[oklch(0.058_0.006_285)] hover:border-primary transition-all duration-300 hover:shadow-[0_0_24px_oklch(0.73_0.12_85/35%)]"
+              className="hidden lg:inline-flex items-center gap-1.5 text-[10px] tracking-[0.25em] uppercase px-4 py-1.5 rounded-full border border-primary/70 text-primary/90 hover:bg-primary hover:text-[oklch(0.058_0.006_285)] hover:border-primary transition-all duration-300 hover:shadow-[0_0_24px_oklch(0.73_0.12_85/35%)]"
             >
               <span>{t('downloadCV')}</span>
             </a>
@@ -146,7 +166,7 @@ export default function Navbar() {
       </motion.header>
 
       {/* ── Hamburger — sits above overlay so it's always tappable ── */}
-      <div className="md:hidden fixed top-0 end-0 z-[61] h-[72px] flex items-center pe-6">
+      <div className="lg:hidden fixed top-0 end-0 z-[61] h-[72px] flex items-center pe-6">
         <button
           onClick={() => setMobileOpen((o) => !o)}
           className="flex flex-col justify-center gap-[5px] w-9 h-9 p-1"

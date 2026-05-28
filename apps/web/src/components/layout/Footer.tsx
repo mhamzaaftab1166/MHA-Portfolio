@@ -41,7 +41,7 @@ export default function Footer() {
           </div>
 
           {/* Nav links */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden lg:flex items-center gap-6">
             {navData.navLinks.map(({ key, href }) => (
               <a
                 key={key}

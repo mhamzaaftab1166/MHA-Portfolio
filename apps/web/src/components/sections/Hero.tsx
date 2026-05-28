@@ -22,10 +22,68 @@ const fadeUp = {
 };
 
 const roleAnim = {
-  enter: { opacity: 0, y: 12, filter: 'blur(4px)' },
-  center: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.42, ease } },
-  exit: { opacity: 0, y: -12, filter: 'blur(4px)', transition: { duration: 0.26, ease: easeIn } },
+  enter: { opacity: 0, y: 12, filter: 'blur(4px)', color: '#E8C96A' },
+  center: { opacity: 1, y: 0, filter: 'blur(0px)', color: '#F5F0E8', transition: { duration: 0.55, ease } },
+  exit: { opacity: 0, y: -12, filter: 'blur(4px)', color: '#F5F0E8', transition: { duration: 0.26, ease: easeIn } },
 };
+
+function NeuralNet() {
+  const reduced = useReducedMotion();
+
+  const nodes: [number, number, number][] = [
+    [3, 5, 1.5], [15, 12, 2], [28, 4, 1.5], [42, 8, 2.5],
+    [55, 3, 1.5], [68, 10, 2], [82, 5, 1.5], [96, 12, 1.5],
+    [8, 25, 1.5], [22, 32, 2], [38, 22, 1.5], [52, 28, 2.5],
+    [65, 20, 2], [78, 28, 1.5], [94, 22, 1.5],
+    [5, 45, 1.5], [18, 50, 1.5], [32, 42, 2],
+    [48, 48, 1.5], [62, 40, 2.5], [76, 48, 1.5], [92, 42, 1.5],
+  ];
+
+  const edges: [number, number][] = [
+    [0,1],[0,8],[1,2],[1,9],[2,3],[2,10],[3,4],[3,10],
+    [4,5],[4,12],[5,6],[5,12],[6,7],[7,14],[8,9],[8,15],
+    [9,10],[9,16],[10,11],[11,12],[11,18],[12,13],[12,19],
+    [13,14],[13,20],[14,21],[15,16],[16,17],[17,18],[18,19],[19,20],[20,21],
+  ];
+
+  const pulseNodes = [3, 11, 19];
+
+  return (
+    <svg
+      viewBox="0 0 100 60"
+      preserveAspectRatio="xMidYMid slice"
+      className="absolute inset-0 w-full h-full"
+      aria-hidden="true"
+    >
+      <g opacity="0.055">
+        <g stroke="#C9A84C" strokeWidth="0.3" fill="none">
+          {edges.map(([a, b], i) => (
+            <line key={i} x1={nodes[a][0]} y1={nodes[a][1]} x2={nodes[b][0]} y2={nodes[b][1]} />
+          ))}
+        </g>
+        <g fill="#C9A84C">
+          {nodes.map(([x, y, r], i) =>
+            !pulseNodes.includes(i) ? <circle key={i} cx={x} cy={y} r={r} /> : null
+          )}
+        </g>
+      </g>
+      {pulseNodes.map((ni) => {
+        const [x, y, r] = nodes[ni];
+        return reduced ? (
+          <circle key={ni} cx={x} cy={y} r={r} fill="#C9A84C" opacity={0.055} />
+        ) : (
+          <motion.circle
+            key={ni}
+            cx={x} cy={y} r={r}
+            fill="#C9A84C"
+            animate={{ opacity: [0.03, 0.18, 0.03] }}
+            transition={{ duration: 2.5 + ni * 0.4, repeat: Infinity, ease: 'easeInOut', delay: ni * 0.6 }}
+          />
+        );
+      })}
+    </svg>
+  );
+}
 
 function Particle({ x, delay, duration }: { x: string; delay: number; duration: number }) {
   const reduced = useReducedMotion();
@@ -77,6 +135,9 @@ export default function Hero() {
           backgroundImage: 'radial-gradient(circle, oklch(0.73 0.12 85 / 65%) 1px, transparent 1px)',
           backgroundSize: '36px 36px',
         }} />
+
+        {/* Neural network — AI/LLM visual signal */}
+        <NeuralNet />
 
         {/* Right bloom — behind photo */}
         <motion.div className="absolute -top-1/4 -end-1/4 rounded-full"
@@ -196,7 +257,7 @@ export default function Hero() {
                       initial="enter"
                       animate="center"
                       exit="exit"
-                      className="font-semibold text-foreground block truncate tracking-wide"
+                      className="font-semibold block truncate tracking-wide"
                       style={{ fontSize: 'clamp(0.8rem, 1.6vw, 1rem)' }}
                     >
                       {roles[roleIndex]}

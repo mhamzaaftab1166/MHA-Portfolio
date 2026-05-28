@@ -70,11 +70,19 @@ export default function Skills() {
   const skillsData = getData('skills', locale);
   const categories: Category[] = skillsData.categories;
   const [activeId, setActiveId] = useState(categories[0].id);
+  const [slideDir, setSlideDir] = useState(0);
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
   const reduced = useReducedMotion();
 
   const current = categories.find(c => c.id === activeId)!;
+
+  const handleTabClick = (id: string) => {
+    const curr = categories.findIndex(c => c.id === activeId);
+    const next = categories.findIndex(c => c.id === id);
+    setSlideDir(next > curr ? 1 : -1);
+    setActiveId(id);
+  };
 
   return (
     <section ref={ref} id="skills" className="relative px-4 pt-20 pb-24 md:px-8 md:pt-24 md:pb-28 lg:px-16 xl:px-24 overflow-hidden">
@@ -97,6 +105,29 @@ export default function Skills() {
         background: 'linear-gradient(to bottom, transparent, oklch(0.73 0.12 85), transparent)',
         transform: 'skewX(-18deg)',
       }} />
+
+      {/* AI tab — circuit board atmosphere */}
+      <AnimatePresence>
+        {activeId === 'ai' && (
+          <motion.div
+            key="ai-circuit"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.65 }}
+            className="absolute inset-0 pointer-events-none"
+          >
+            <div className="absolute inset-0" style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23C9A84C' stroke-width='0.7'%3E%3Cpath d='M0 15h15v-10h20v10h25'/%3E%3Cpath d='M0 45h10v-15h10M40 45h20M40 30v15'/%3E%3Cpath d='M35 0v15M35 45v15'/%3E%3Ccircle cx='15' cy='15' r='2' fill='%23C9A84C'/%3E%3Ccircle cx='35' cy='5' r='1.5' fill='%23C9A84C'/%3E%3Ccircle cx='35' cy='15' r='2' fill='%23C9A84C'/%3E%3Ccircle cx='35' cy='45' r='1.5' fill='%23C9A84C'/%3E%3Ccircle cx='40' cy='30' r='2' fill='%23C9A84C'/%3E%3Ccircle cx='20' cy='30' r='1.5' fill='%23C9A84C'/%3E%3C/g%3E%3C/svg%3E")`,
+              backgroundSize: '60px 60px',
+              opacity: 0.05,
+            }} />
+            <div className="absolute inset-0" style={{
+              background: 'radial-gradient(ellipse at 50% 60%, oklch(0.73 0.12 85 / 6%) 0%, transparent 65%)',
+            }} />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-10">
 
@@ -136,7 +167,7 @@ export default function Skills() {
           {categories.map(cat => (
             <motion.button
               key={cat.id}
-              onClick={() => setActiveId(cat.id)}
+              onClick={() => handleTabClick(cat.id)}
               whileHover={reduced ? {} : { scale: 1.03 }}
               whileTap={reduced ? {} : { scale: 0.97 }}
               transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
@@ -155,9 +186,9 @@ export default function Skills() {
         <AnimatePresence mode="wait">
           <motion.div
             key={activeId}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -4 }}
+            initial={{ opacity: 0, x: slideDir * 24, filter: 'blur(4px)' }}
+            animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+            exit={{ opacity: 0, x: slideDir * -24, filter: 'blur(4px)' }}
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
             className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3"
           >
